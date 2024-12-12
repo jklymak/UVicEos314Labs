@@ -1,0 +1,931 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>Lab 2: Intro: MATLAB times and graphs</title>
+<meta name="generator" content="MATLAB 24.1">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2024-09-04">
+<meta name="DC.source" content="Lab2.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style>
+</head>
+<body>
+<div class="content">
+<h1>Lab 2: Intro: MATLAB times and graphs</h1>
+<!--introduction-->
+<!--/introduction-->
+<h2>Contents</h2>
+<div>
+<ul>
+<li>
+<a href="#1">Objective:</a>
+</li>
+<li>
+<a href="#2">Source:</a>
+</li>
+<li>
+<a href="#3">Commands we will use:</a>
+</li>
+<li>
+<a href="#4">1: Using MATLAB to investigate data</a>
+</li>
+<li>
+<a href="#12">2. Timeseries Data</a>
+</li>
+<li>
+<a href="#21">3. Tutorial: Dealing with MATLAB times</a>
+</li>
+<li>
+<a href="#33">3. Plotting some timeseries data</a>
+</li>
+<li>
+<a href="#41">4. Saving your work</a>
+</li>
+<li>
+<a href="#47">5. Formatting display and graphics</a>
+</li>
+<li>
+<a href="#48">ASSIGNMENT</a>
+</li>
+<li>
+<a href="#49">Part I: Writing your own script (m-file)</a>
+</li>
+<li>
+<a href="#50">NOTE:</a>
+</li>
+</ul>
+</div>
+<h2 id="1">Objective:</h2>
+<p>The objective of this lab is to get you started using the MATLAB computer program and to help you understand how MATLAB processes time data. We'll take a look at functions that output more than one value, and try making both vertical plots and timeseries plots.</p>
+<h2 id="2">Source:</h2>
+<p>You should be able to open and edit the file that made this html document. From within MATLAB, open Lab2.m (Do not just double-click the file from an Explorer window).</p>
+<h2 id="3">Commands we will use:</h2>
+<p>load, end, max, mean, now, datestr, datenum, plot, ylabel, datetick, xlabel, subplot, save, print</p>
+<h2 id="4">1: Using MATLAB to investigate data</h2>
+<p>In this section we practice the skills you learned in the tutorial in Lab 1 and learn how to:</p>
+<p>a) Load and save data</p>
+<p>b) manipulate the data</p>
+<p>c) plot data</p>
+<p>d) save our steps in as a script or m-file so they can be reproduced.</p>
+<p>We'll start by using a temperature vs depth data set from a station in Saanich Inlet, S4, during a cruise in May 2008.</p>
+<pre class="codeinput">
+<span class="comment">% To load the data into MATLAB, enter at the command prompt:</span>
+clear
+load <span class="string">S4May2008.mat</span>
+</pre>
+<p>Note that you will have to be in the directory <tt>MATLAB/Lab2</tt> in order for this to be loaded. Otherwise MATLAB won't know where to find it. You change the directory using <tt>cd</tt> command, or you can use the GUI in the upper right corner.</p>
+<p>Lets see what is in here by typing</p>
+<pre class="codeinput">whos
+</pre>
+<pre class="codeoutput">  Name           Size            Bytes  Class     Attributes
+
+  actualP      202x1              1616  double              
+  actualT      202x1              1616  double              
+
+</pre>
+<p>or, you can look in the <i>Workspace</i> window.</p>
+<p>now, lets inspect what is in these variables. In the <i>Workspace</i> window you can double-click on the variable and the <i>Array Editor</i> will open, showing what is in the array. Or, you could type</p>
+<pre class="codeinput">actualP(1:5)
+actualT(1:5)
+</pre>
+<pre class="codeoutput">
+ans =
+
+    1.5179
+    2.3677
+    3.2144
+    4.1705
+    5.1588
+
+
+ans =
+
+   12.6781
+   12.6762
+   12.6122
+   11.2340
+   10.1731
+
+</pre>
+<p>MATLAB has built in functions that allow us to find out about the data.</p>
+<p>What is the minimum Temperature value recorded during the May 2008 data set? At what depth did it occur? Use <tt>help min</tt> to see how to use the min function.</p>
+<pre class="codeinput">min(actualT) <span class="comment">% this returns the minimum value of the array T and stores it as _ans_</span>
+</pre>
+<pre class="codeoutput">
+ans =
+
+    7.7657
+
+</pre>
+<pre class="codeinput">Tmin = min(actualT) <span class="comment">% this stores the min value of T as a new variable, named Tmin</span>
+</pre>
+<pre class="codeoutput">
+Tmin =
+
+    7.7657
+
+</pre>
+<p>Note in the help listing that we can use the format: [Tmin, i]=min(T)</p>
+<p>This statement will return two pieces of information: the maximum temperature <i>and</i> the place in the array that it happened, that is, the index value. Try it -</p>
+<pre class="codeinput">[Tmin, i] = min(actualT)
+</pre>
+<pre class="codeoutput">
+Tmin =
+
+    7.7657
+
+
+i =
+
+    36
+
+</pre>
+<p>What is the value of i? What depth (pressure) is at index i?</p>
+<pre class="codeinput">i
+actualP(i)
+</pre>
+<pre class="codeoutput">
+i =
+
+    36
+
+
+ans =
+
+   34.9646
+
+</pre>
+<p>Let's make a graph of temperature vs pressure (depth) like you did at the end of last lab: note - we want to put pressure on the y-axis so we can have depth increasing downwards</p>
+<pre class="codeinput">plot(actualT, actualP)
+axis <span class="string">ij</span>  <span class="comment">%I'm going to throw this in here now... what does it do??</span>
+
+xlabel(<span class="string">'T ^oC'</span>)
+ylabel(<span class="string">'pressure db'</span>)
+</pre>
+<img vspace="5" hspace="5" src="Lab2_01.png" alt=""> <h2 id="12">2. Timeseries Data</h2>
+<p>Now let's switch from a vertical plot of T vs depth, to a timeseries plot! We will use a one-day dataset of temperature at ~96 m depth vs time from Saanich Inlet from March 13, 2012.</p>
+<p>To load the data into MATLAB, enter at the command prompt:</p>
+<pre class="codeinput">clear;
+load <span class="string">Mar13_T.mat</span>
+</pre>
+<p>Note that you will have to be in the directory <tt>MATLAB/Lab2</tt> in order for this to be loaded. Otherwise MATLAB won't know where to find it. You change the directory using <tt>cd</tt> command, or you can use the GUI in the upper right corner.</p>
+<p>Lets see what is in here by typing</p>
+<pre class="codeinput">whos
+</pre>
+<pre class="codeoutput">  Name         Size            Bytes  Class     Attributes
+
+  T         1440x1             11520  double              
+  time      1440x1             11520  double              
+
+</pre>
+<p>or, you can look in the <i>Workspace</i> window.</p>
+<p>now, lets inspect what is in these variables. In the <i>Workspace</i> window you can double-click on the variable and the <i>Array Editor</i> will open, showing what is in the array. Or, you could type</p>
+<pre class="codeinput">T(1:5)
+time(1:5)
+</pre>
+<pre class="codeoutput">
+ans =
+
+    8.1646
+    8.1602
+    8.1624
+    8.1619
+    8.1592
+
+
+ans =
+
+   1.0e+05 *
+
+    7.3494
+    7.3494
+    7.3494
+    7.3494
+    7.3494
+
+</pre>
+<p>What do these two commands show? They show the first 5 elements of the array named <tt>T</tt> and the array named <tt>time</tt>. How many elements are in these two arrays? How would you find the last five elements of the arrays? (hint - try the function <tt>end</tt> )</p>
+<p>MATLAB has built in functions that allow us to find out about the data.</p>
+<p>What is the minimum Temperature value recorded during the Mar 2012 data set? At what time of day did it occur? Use <tt>help min</tt> to see how to use the max function.</p>
+<pre class="codeinput">min(T) <span class="comment">% this returns the minimum value of the array T and stores it as _ans_</span>
+</pre>
+<pre class="codeoutput">
+ans =
+
+    7.9745
+
+</pre>
+<pre class="codeinput">Tmin = min(T) <span class="comment">% this stores the min value of T as a new variable, named Tmin</span>
+</pre>
+<pre class="codeoutput">
+Tmin =
+
+    7.9745
+
+</pre>
+<p>Note in the help listing that we can use the format: [Tmin, i]=min(T)</p>
+<p>This statement will return two pieces of information: the minimum temperature <i>and</i> the place in the array that it happened, that is, the index value. Try it -</p>
+<pre class="codeinput">[Tmin, i] = min(T)
+</pre>
+<pre class="codeoutput">
+Tmin =
+
+    7.9745
+
+
+i =
+
+   692
+
+</pre>
+<p>What is the value of i? What time is at index i?</p>
+<pre class="codeinput">i
+time(i)
+</pre>
+<pre class="codeoutput">
+i =
+
+   692
+
+
+ans =
+
+   7.3494e+05
+
+</pre>
+<p>Believe it or not, this number is a time. It's just in MATLAB format.</p>
+<h2 id="21">3. Tutorial: Dealing with MATLAB times</h2>
+<p>We will be dealing with timeseries a lot during this course, so understanding how to work with times is important. The entries in <tt>time</tt> are somewhat hard to understand:</p>
+<pre class="codeinput">time(1:3)
+</pre>
+<pre class="codeoutput">
+ans =
+
+   1.0e+05 *
+
+    7.3494
+    7.3494
+    7.3494
+
+</pre>
+<p>MATLAB stores times as days since Dec 31 -0001 AD. So.... 1 is equal to Jan 1, 0000. What that means is that today is</p>
+<pre class="codeinput">now
+</pre>
+<pre class="codeoutput">
+ans =
+
+   7.3950e+05
+
+</pre>
+<p>which is an unwieldly way of looking at things. MATLAB supplies a suite of functions for looking at times:</p>
+<pre class="codeinput">datestr(now)
+</pre>
+<pre class="codeoutput">
+ans =
+
+    '04-Sep-2024 14:22:25'
+
+</pre>
+<p>is one of the most convenient. There are options to <tt>datestr()</tt> that you can peruse using <tt>help datestr</tt>. Note: a <i>string</i> is a set of characters, i.e., a word!</p>
+<pre class="codeinput">datestr(now,1)
+datestr(now,27)
+datestr(now,<span class="string">'HH:MM dd mmm yyyy'</span>)
+datestr(now,<span class="string">'ddd'</span>)
+</pre>
+<pre class="codeoutput">
+ans =
+
+    '04-Sep-2024'
+
+
+ans =
+
+    'Q3-2024'
+
+
+ans =
+
+    '14:22 04 Sep 2024'
+
+
+ans =
+
+    'Wed'
+
+</pre>
+<p>One way to deal with the funny MATLAB format is to subtract off a known date. Here we subtract off Jan 1, 2012 (we'll use 2012, since we know that this dataset comes from 2012):</p>
+<pre class="codeinput">time(1:3)-datenum(2012,1,1)  <span class="comment">% Note: the function |datenum| allows us to MAKE a date-number from a string of words.</span>
+</pre>
+<pre class="codeoutput">
+ans =
+
+   72.0003
+   72.0010
+   72.0017
+
+</pre>
+<p>Note: instead of blindly doing what the text tells you to do... think about what you are asking the computer to do. In this case, what is it we are doing? Write it out in WORDS to help you understand.</p>
+<p>And we see that the data we have collected is 72 days into 2012. The decimals represent portions of day.</p>
+<p>The function <tt>datenum()</tt> returns a matlab-formated date using either strings or numbers of the month. If today is Sept 21, 2016 at 9:10:23 am</p>
+<pre class="codeinput">datenum(2018,9,26)
+datenum(<span class="string">'26-Sept-2018'</span>)
+datenum(2018,9,26,9,10,23)
+datenum(<span class="string">'26-Sept-2018 09:10:23'</span>)
+</pre>
+<pre class="codeoutput">
+ans =
+
+      737329
+
+
+ans =
+
+      737329
+
+
+ans =
+
+   7.3733e+05
+
+
+ans =
+
+   7.3733e+05
+
+</pre>
+<p>If we want to figure out how much time there is between samples, we can use the <tt>diff</tt> and <tt>median</tt> functions:</p>
+<pre class="codeinput">dtMed = median(diff(time))
+</pre>
+<pre class="codeoutput">
+dtMed =
+
+   6.9446e-04
+
+</pre>
+<p>Remember - you can look at <tt>help diff</tt> and <tt>help median</tt> to see how these functions work. We've created a new variable called dtMed (that is, 'delta time, median'... or change in time, median), but we could call it anything we like.</p>
+<p>This is some fraction of a day. To put into seconds we multiply by the number of hours in a day, and the number of seconds in an hour</p>
+<pre class="codeinput">dtMed*24*3600
+</pre>
+<pre class="codeoutput">
+ans =
+
+   60.0010
+
+</pre>
+<p>and see that the data have a little over 1-minute between samples.</p>
+<p>Now that you've seen some ways to look at time... let's revisit the question above. At what time (in this dataset) was the minimum temperature recorded? (hint... try using <tt>datestr</tt>)</p>
+<h2 id="33">3. Plotting some timeseries data</h2>
+<p>My favourite way of exploring data is to graph it. I highly recommend working through MATLAB documentaion at <a href="http://www.mathworks.com/help/matlab/graphics.html">http://www.mathworks.com/help/matlab/graphics.html</a>. Use the <tt>plot</tt> command to plot the data in the vector <tt>T</tt> versus <tt>time</tt>. You can always use the <tt>help</tt> function to see how to use a particular command.</p>
+<pre class="codeinput">figure(1);clf
+plot(time, T)
+</pre>
+<img vspace="5" hspace="5" src="Lab2_02.png" alt=""> <p>Add an axis label to the y-axis using the <tt>ylabel()</tt> command:</p>
+<pre class="codeinput">ylabel(<span class="string">'T [^oC]'</span>)  <span class="comment">%note the formatting commands in this label!</span>
+</pre>
+<img vspace="5" hspace="5" src="Lab2_03.png" alt=""> <p>How do we get a meaningful time on the x-axis? We can use various tick-annotation functions. <tt>datetick()</tt> comes with MatLab</p>
+<pre class="codeinput">datetick
+</pre>
+<img vspace="5" hspace="5" src="Lab2_04.png" alt=""> <p>note how it changes the limits of the plot. If you don't like that:</p>
+<pre class="codeinput">figure(2);clf
+plot(time,T);
+datetick(<span class="string">'keeplimits'</span>);
+ylabel(<span class="string">'T [^oC]'</span>)
+</pre>
+<img vspace="5" hspace="5" src="Lab2_05.png" alt=""> <p>You can also specify the xticks (this command is a quite tricky... spend some time looking at it to figure out how it works!)</p>
+<pre class="codeinput">figure(2);clf
+plot(time,T);
+set(gca,<span class="string">'xtick'</span>,[floor(time(1)):4/24:ceil(time(end))])
+datetick(<span class="string">'keepticks'</span>,<span class="string">'keeplimits'</span>);
+ylabel(<span class="string">'T [^oC]'</span>)
+xlabel(<span class="string">'Time'</span>);
+</pre>
+<img vspace="5" hspace="5" src="Lab2_06.png" alt=""> <p>We can use MATLAB to figure out what the date is for our data set... see if you can figure out what the statements below do -</p>
+<pre class="codeinput">str=[<span class="string">'Time ['</span> datestr(time(1),1) <span class="string">']'</span>]
+xlabel(str)
+<span class="comment">%</span>
+</pre>
+<pre class="codeoutput">
+str =
+
+    'Time [13-Mar-2012]'
+
+</pre>
+<img vspace="5" hspace="5" src="Lab2_07.png" alt=""> <p>Remember to use the <tt>help plot</tt> command and the <tt>plot</tt> documentation to learn about different things you can do with plot. We've just made the default plot, which uses a blue line for the data. But you could use symbols, or dashed lines, or maybe change the colour of the line...</p>
+<p>Scroll to the bottom of any help file and you will see some examples. I just about always start there when I'm trying to figure out how to use a function.</p>
+<h2 id="41">4. Saving your work</h2>
+<p>There are a number of ways to save your work in MATLAB. So far, you have been saving your script (i.e. the series of commands you have typed into the editor window). You've probably been clicking on the floppy disk icon in the top left corner of the editor window. You could also type a Ctrl-S at any time to do the same thing.</p>
+<p>But what if you do a lot of processing work on a data set, getting it into the format you want for later use? Or maybe you want to share the results of your analysis? You don't need to give your partner your code and all the messy work you did to get to the final result. You just want to save the final result to hand on. In fact, you can make a .mat file, like Mar13_T.mat, that you could share.</p>
+<p>You will do this using the <tt>save</tt> command. If you just use the command <tt>save</tt>, MATLAB will create a new .mat file called matlab.mat that contains everything in the Workspace, that is, every variable / matrix / vector etc that is currently in memory. Try experimenting with this function, and use the <tt>help save</tt> command and documentation to figure out how to make <tt>save</tt> do exactly what you want.</p>
+<p>And what about figures? You can use the floppy disk icon or you can explicitly hard-code the saving of figures into your program using the <tt>print</tt> command.</p>
+<p>There are a couple ways to save the figures you generate, so that you don't have to keep running the code to make the figures. One is by using the <tt>print()</tt> command. This will save the figure as an image file in the current directory.</p>
+<p>Type <tt>help print</tt> for other printing options.</p>
+<pre class="codeinput">print <span class="string">-djpeg95</span> <span class="string">-r200</span> <span class="string">Lab2Fig2.jpg</span>
+</pre>
+<img vspace="5" hspace="5" src="Lab2_08.png" alt=""> <p>Another option is to use the 'save' icon in the top left of the figure window. Use the drop-down menu to choose the image format (I like to use .jpg). Now you have an image file that can be inserted into documents such as Word files or Powerpoint presentations.</p>
+<p>Take a few minutes to examine the menu options in the figure window. Sometimes it is easier to make alterations to your plot in this environment than to try to code everything explicitly. However, if you make many plots, you will have to do this by hand each time.</p>
+<h2 id="47">5. Formatting display and graphics</h2>
+<pre class="codeinput">
+<span class="comment">% format</span>
+<span class="comment">%         format short 3.1416</span>
+<span class="comment">%         format short e 3.1416e+00</span>
+<span class="comment">%         format long 3.14159265358979</span>
+<span class="comment">%         format long e 3.141592653589793e+00</span>
+<span class="comment">%         format compact suppresses extra line feeds</span>
+<span class="comment">% xlabel('string'), ylabel('string') label the horizontal and vertical axes, respectively, in the current plot;</span>
+<span class="comment">% title('string') add a title to the current plot;</span>
+<span class="comment">% axis([XMIN XMAX YMIN YMAX]) change axis limits on the current graph ;</span>
+<span class="comment">% grid adds a rectangular grid to the current plot;</span>
+<span class="comment">% hold on freezes the current plot so that subsequent graphs will be displayed with the current;</span>
+<span class="comment">% hold off releases the current plot; the next plot will erase the current before displaying;</span>
+<span class="comment">% subplot puts multiple plots in one graphics window.</span>
+<span class="comment">%</span>
+<span class="comment">%</span>
+</pre>
+<h2 id="48">ASSIGNMENT</h2>
+<h2 id="49">Part I: Writing your own script (m-file)</h2>
+<p>For this section, you will write your own script to remove the mean from the March 13, 2012 Temperature data and re-plot it.</p>
+<div>
+<ul>
+<li>Make a new <i>m-file</i> called <tt>Lab2CodeYourlastname.m</tt>. This script will contain all the code needed to: Load the March 13, 2012 datafile. Calculate the mean of T (using the <tt>mean</tt> function) and subtract it from <tt>T</tt>, making a new variable. Now that you've done some work on your dataset, save your new variable (T with the mean removed) and <tt>time</tt> (and ONLY those two variables) into a new mat file called <tt>george.mat</tt>. Now plot the new variable versus time, using a red dashed line. Label your axes. Include a descriptive (but concise!) title for your figure. And then add a line to your code that will save your figure with the name LastnameFig2.jpg</li>
+</ul>
+</div>
+<p>As a comment below your code, include your answer to Q1 below.</p>
+<p>
+<b>Q1</b>. The value obtained by subtracting the mean of a data set from the data is called the <i>temperature anomaly</i>. Why do you think oceanographers calculate temperature anomalies? Describe a situation where this might be useful.</p>
+<h2 id="50">NOTE:</h2>
+<p>You will be marked on 1) your answers to the questions; 2) your ability to follow directions; and 3) the elegance of your code. Keep things neat and organized. Use % to make comment lines to explain what you are doing. Use the semicolon ; after commands to supress unnecessary output. Make sure you follow the file name conventions I've asked for.</p>
+<p>You need to hand in 1 file:</p>
+<div>
+<ul>
+<li>
+<tt>Lab2CodeYourlastname.m</tt> with your code and answer to Q1</li>
+</ul>
+</div>
+<p>Upload your assignment to the Brightspace Dropbox.</p>
+<p>. . .</p>
+<p>Last compiled on:</p>
+<pre class="codeinput">datestr(now)
+</pre>
+<pre class="codeoutput">
+ans =
+
+    '04-Sep-2024 14:22:30'
+
+</pre>
+<p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2024a</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+%% Lab 2: Intro: MATLAB times and graphs
+
+%% Objective:
+% The objective of this lab is to get you started using the MATLAB computer
+% program and to help you understand how MATLAB processes time data. We'll
+% take a look at functions that output more than one value, and try making
+% both vertical plots and timeseries plots. 
+%
+%% Source:
+% You should be able to open and edit the file that made this html
+% document. From within MATLAB, open Lab2.m (Do not just double-click the
+% file from an Explorer window). 
+%% Commands we will use: 
+% load, end, max, mean, now, datestr, datenum, plot, ylabel,
+% datetick, xlabel, subplot, save, print
+
+%% 1: Using MATLAB to investigate data
+% In this section we practice the skills you learned in the tutorial
+% in Lab 1 and learn how to:   
+%
+% a) Load and save data
+%
+% b) manipulate the data
+%
+% c) plot data
+%
+% d) save our steps in as a script or m-file so they can be reproduced.
+%
+% We'll start by using a temperature vs depth data set from a station in
+% Saanich Inlet, S4, during a cruise in May 2008.
+
+% To load the data into MATLAB, enter at the command prompt:
+clear
+load S4May2008.mat
+%%
+% Note that you will have to be in the directory |MATLAB/Lab2| in order
+% for this to be loaded. Otherwise MATLAB won't know where to find it.
+% You change the directory using |cd| command, or you can use the GUI
+% in the upper right corner.
+%
+% Lets see what is in here by typing
+whos
+%%
+% or, you can look in the _Workspace_ window.  
+%
+% now, lets inspect what is in these variables.  In the _Workspace_
+% window you can double-click on the variable and the _Array Editor_
+% will open, showing what is in the array.  Or, you could type
+actualP(1:5)
+actualT(1:5)
+
+
+%% 
+% MATLAB has built in functions that allow us to find out about the data. 
+%
+% What is the minimum Temperature value recorded during the May 2008 data
+% set? At what depth did it occur? Use |help min| to see how to use the
+% min function. 
+
+min(actualT) % this returns the minimum value of the array T and stores it as _ans_
+%%
+%
+Tmin = min(actualT) % this stores the min value of T as a new variable, named Tmin
+
+%%
+% Note in the help listing that we can use the format: [Tmin, i]=min(T)
+% 
+% This statement will return two pieces of information: the maximum
+% temperature _and_ the place in the array that it happened, that is, the
+% index value. Try it -
+[Tmin, i] = min(actualT)
+
+
+%%
+% What is the value of i? 
+% What depth (pressure) is at index i? 
+i
+actualP(i) 
+%%
+% Let's make a graph of temperature vs pressure (depth) like you did at the
+% end of last lab: 
+% note - we want to put pressure on the y-axis so we can have depth increasing downwards
+plot(actualT, actualP)  
+axis ij  %I'm going to throw this in here now... what does it do?? 
+
+xlabel('T ^oC')
+ylabel('pressure db')
+
+
+%% 2. Timeseries Data
+% Now let's switch from a vertical plot of T vs depth, to a timeseries plot!
+% We will use a one-day dataset of temperature at ~96 m depth vs time
+% from Saanich Inlet from March 13, 2012.  
+%
+% To load the data into MATLAB, enter at the command prompt:
+clear;
+load Mar13_T.mat
+
+%%
+% Note that you will have to be in the directory |MATLAB/Lab2| in order
+% for this to be loaded. Otherwise MATLAB won't know where to find it.
+% You change the directory using |cd| command, or you can use the GUI
+% in the upper right corner.
+%
+% Lets see what is in here by typing
+whos
+%%
+% or, you can look in the _Workspace_ window.  
+%
+% now, lets inspect what is in these variables.  In the _Workspace_
+% window you can double-click on the variable and the _Array Editor_
+% will open, showing what is in the array.  Or, you could type
+T(1:5)
+time(1:5)
+%%
+% What do these two commands show? They show the first 5 elements of the
+% array named |T| and the array named |time|. How many elements are in these
+% two arrays? How would you find the last five elements of the arrays?
+% (hint - try the function |end| )
+
+
+%% 
+% MATLAB has built in functions that allow us to find out about the data. 
+%
+% What is the minimum Temperature value recorded during the Mar 2012 data
+% set? At what time of day did it occur? Use |help min| to see how to use the
+% max function. 
+
+min(T) % this returns the minimum value of the array T and stores it as _ans_
+%%
+%
+Tmin = min(T) % this stores the min value of T as a new variable, named Tmin
+
+%%
+% Note in the help listing that we can use the format: [Tmin, i]=min(T)
+% 
+% This statement will return two pieces of information: the minimum
+% temperature _and_ the place in the array that it happened, that is, the
+% index value. Try it -
+[Tmin, i] = min(T)
+
+%%
+% What is the value of i? 
+% What time is at index i? 
+i
+time(i) 
+
+%%
+% Believe it or not, this number is a time. It's just in MATLAB format. 
+
+%% 3. Tutorial: Dealing with MATLAB times
+% We will be dealing with timeseries a lot during this course, so
+% understanding how to work with times is important.  The entries in
+% |time| are somewhat hard to understand:
+time(1:3)
+%%
+% MATLAB stores times as days since Dec 31 -0001 AD.  So.... 1 is
+% equal to Jan 1, 0000. What that means is that today is 
+now
+%%
+% which is an unwieldly way of looking at things.  MATLAB supplies a
+% suite of functions for looking at times:
+datestr(now)
+%%
+% is one of the most convenient.  There are options to |datestr()|
+% that you can peruse using |help datestr|. Note: a _string_ is a set of
+% characters, i.e., a word!
+datestr(now,1)
+datestr(now,27)
+datestr(now,'HH:MM dd mmm yyyy')
+datestr(now,'ddd')
+%%
+% One way to deal with the funny MATLAB format is to subtract off
+% a known date.  Here we subtract off Jan 1, 2012 (we'll use 2012, since we 
+% know that this dataset comes from 2012):
+time(1:3)-datenum(2012,1,1)  % Note: the function |datenum| allows us to MAKE a date-number from a string of words.
+%%
+% Note: instead of blindly doing what the text tells you to do... think
+% about what you are asking the computer to do. In this case, what is it we
+% are doing? Write it out in WORDS to help you understand.
+%%
+% And we see that the data we have collected is 72 days into 2012.
+% The decimals represent portions of day.  
+%
+% The function |datenum()| returns a matlab-formated date using either
+% strings or numbers of the month.  If today is Sept 21, 2016 at 9:10:23 am
+datenum(2018,9,26)
+datenum('26-Sept-2018')
+datenum(2018,9,26,9,10,23)
+datenum('26-Sept-2018 09:10:23')
+
+%%
+% If we want to figure out how much time there is between samples, we
+% can use the |diff| and |median| functions:
+dtMed = median(diff(time))
+
+%%
+% Remember - you can look at |help diff| and |help median| to see how
+% these functions work. We've created a new variable called dtMed (that is,
+% 'delta time, median'... or change in time, median), but we could call it
+% anything we like. 
+%%
+% This is some fraction of a day.  To put into seconds we multiply by
+% the number of hours in a day, and the number of seconds in an hour
+dtMed*24*3600
+%%
+% and see that the data have a little over 1-minute between samples.  
+%%
+% Now that you've seen some ways to look at time... let's revisit the
+% question above. At what time (in this dataset) was the minimum
+% temperature recorded? (hint... try using |datestr|)
+
+
+
+%% 3. Plotting some timeseries data
+%
+% My favourite way of exploring data is to graph it.  I highly recommend
+% working through MATLAB documentaion at
+% http://www.mathworks.com/help/matlab/graphics.html. Use the |plot|
+% command to plot the data in the vector |T| versus |time|. You can always
+% use the |help| function to see how to use a particular command.
+%
+figure(1);clf
+plot(time, T)
+
+%%
+% Add an axis label to the y-axis using the |ylabel()| command:
+ylabel('T [^oC]')  %note the formatting commands in this label!
+
+%% 
+% How do we get a meaningful time on the x-axis? We can use various
+% tick-annotation functions. |datetick()| comes with MatLab
+datetick
+%%
+% note how it changes the limits of the plot.  If you don't like that:
+figure(2);clf
+plot(time,T);
+datetick('keeplimits');
+ylabel('T [^oC]')
+%%
+% You can also specify the xticks (this command is a quite tricky... 
+% spend some time looking at it to figure out how it works!)
+figure(2);clf
+plot(time,T);
+set(gca,'xtick',[floor(time(1)):4/24:ceil(time(end))]) 
+datetick('keepticks','keeplimits');
+ylabel('T [^oC]')
+xlabel('Time');
+%%
+% We can use MATLAB to figure out what the date is for our data set... see
+% if you can figure out what the statements below do - 
+str=['Time [' datestr(time(1),1) ']']
+xlabel(str)
+%
+%%
+% Remember to use the |help plot| command and the |plot| documentation to
+% learn about different things you can do with plot. We've just made the
+% default plot, which uses a blue line for the data. But you could use
+% symbols, or dashed lines, or maybe change the colour of the line... 
+%
+%%
+% Scroll to the bottom of any help file and you will see some examples. I
+% just about always start there when I'm trying to figure out how to use a
+% function. 
+   
+%% 4. Saving your work
+%
+% There are a number of ways to save your work in MATLAB. So far, you have
+% been saving your script (i.e. the series of commands you have typed into
+% the editor window). You've probably been clicking on the floppy disk icon
+% in the top left corner of the editor window. You could also type a Ctrl-S
+% at any time to do the same thing. 
+%%
+% But what if you do a lot of processing work on a data set, getting it
+% into the format you want for later use? Or maybe you want to share the
+% results of your analysis? You don't need to give your partner your code
+% and all the messy work you did to get to the final result. You just want
+% to save the final result to hand on. In fact, you can make a .mat file,
+% like Mar13_T.mat, that you could share.
+%
+% You will do this using the |save| command. If you just use the command
+% |save|, MATLAB will create a new .mat file called matlab.mat that
+% contains everything in the Workspace, that is, every variable / matrix /
+% vector etc that is currently in memory. Try experimenting with this
+% function, and use the |help save| command and documentation to figure out
+% how to make |save| do exactly what you want. 
+%
+%%
+% And what about figures? You can use the floppy disk icon or you can
+% explicitly hard-code the saving of figures into your program using the
+% |print| command.
+%%
+% There are a couple ways to save the figures you generate, so that you
+% don't have to keep running the code to make the figures. One is by using
+% the |print()| command. This will save the figure as an image file in the
+% current directory. 
+%
+% Type |help print| for other printing options.
+print -djpeg95 -r200 Lab2Fig2.jpg
+
+%%
+% Another option is to use the 'save' icon in the top left of the figure
+% window. Use the drop-down menu to choose the image format (I like to use
+% .jpg). Now you have an image file that can be inserted into documents
+% such as Word files or Powerpoint presentations.
+%
+%% 
+% Take a few minutes to examine the menu options in the figure
+% window. Sometimes it is easier to make alterations to your plot in
+% this environment than to try to code everything explicitly. However,
+% if you make many plots, you will have to do this by hand each time. 
+
+
+
+
+%% 5. Formatting display and graphics
+
+% format
+%         format short 3.1416
+%         format short e 3.1416e+00
+%         format long 3.14159265358979
+%         format long e 3.141592653589793e+00
+%         format compact suppresses extra line feeds 
+% xlabel('string'), ylabel('string') label the horizontal and vertical axes, respectively, in the current plot;
+% title('string') add a title to the current plot;
+% axis([XMIN XMAX YMIN YMAX]) change axis limits on the current graph ;
+% grid adds a rectangular grid to the current plot;
+% hold on freezes the current plot so that subsequent graphs will be displayed with the current;
+% hold off releases the current plot; the next plot will erase the current before displaying;
+% subplot puts multiple plots in one graphics window. 
+%  
+%
+%% ASSIGNMENT
+%% Part I:  Writing your own script (m-file)
+%
+% For this section, you will write your own script to remove the mean from
+% the March 13, 2012 Temperature data and re-plot it. 
+%
+% * Make a new _m-file_ called |Lab2CodeYourlastname.m|.  This script
+% will contain all the code needed to: Load the March 13, 2012 datafile. Calculate the
+% mean of T (using the |mean| function) and subtract it from |T|, making a
+% new variable. Now that you've done some work on your dataset, save your
+% new variable (T with the mean removed) and |time| (and ONLY those
+% two variables) into a new mat file called |george.mat|. Now plot the new
+% variable versus time, using a red dashed line. Label your axes. Include a
+% descriptive (but concise!) title for your figure. And then add a line to
+% your code that will save your figure with the name LastnameFig2.jpg
+%
+% As a comment below your code, include your answer to Q1 below. 
+% 
+% *Q1*. The value obtained by subtracting the mean of a data set from the
+% data is called the _temperature anomaly_. Why do you think oceanographers
+% calculate temperature anomalies? Describe a situation where this might
+% be useful. 
+% 
+
+
+%% NOTE:
+% You will be marked on 1) your answers to the questions; 2) your ability
+% to follow directions; and 3) the elegance of your code. Keep things neat
+% and organized. Use % to make comment lines to explain what you are doing.
+% Use the semicolon ; after commands to supress unnecessary output. Make
+% sure you follow the file name conventions I've asked for. 
+%
+% You need to hand in 1 file: 
+%
+% * |Lab2CodeYourlastname.m| with your code and answer to Q1
+%
+% Upload your assignment to the Brightspace Dropbox.
+
+
+
+%%
+% .
+% .
+% .
+%%
+% Last compiled on: 
+datestr(now)
+
+##### SOURCE END #####
+-->
+</body>
+</html>

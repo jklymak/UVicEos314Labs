@@ -1,0 +1,455 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>EOS 314 - Physical Oceanography Laboratory</title>
+<meta name="generator" content="MATLAB 24.1">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2024-10-15">
+<meta name="DC.source" content="index.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style>
+</head>
+<body>
+<div class="content">
+<h1>EOS 314 - Physical Oceanography Laboratory</h1>
+<!--introduction-->
+<!--/introduction-->
+<h2>Contents</h2>
+<div>
+<ul>
+<li>
+<a href="#1">Preamble to the 314 Laboratory</a>
+</li>
+<li>
+<a href="#4">Strickland cruise data are now available!</a>
+</li>
+<li>
+<a href="#6">Fall 2024</a>
+</li>
+<li>
+<a href="#7">Week of Sept 9 - Lab 1</a>
+</li>
+<li>
+<a href="#9">Week of Sept 16 - Lab 2</a>
+</li>
+<li>
+<a href="#11">Wed Sept 18 OR Wed Sept 25 - Field Exercise</a>
+</li>
+<li>
+<a href="#13">Mon Sept 23 (B02) and Wed Oct 2 (B01) - Lab 3</a>
+</li>
+<li>
+<a href="#15">Week of Oct 7 - Lab 4</a>
+</li>
+<li>
+<a href="#17">Wed Oct 16 (B01) and Mon Oct 21 (B02) - Lab 5</a>
+</li>
+<li>
+<a href="#19">Wed Oct 23 (B01) and Mon Oct 28 (B02) - Lab 6</a>
+</li>
+<li>
+<a href="#20">Wed Oct 30 (B01) and Mon Nov 4 (B02) - Lab 7</a>
+</li>
+<li>
+<a href="#22">Wed Nov 6 - Project Orientation</a>
+</li>
+<li>
+<a href="#24">Week of Nov 11 - Reading Break</a>
+</li>
+<li>
+<a href="#26">Wed Nov 23 through Wed Nov 30 - Open Labs</a>
+</li>
+<li>
+<a href="#27">Useful Links</a>
+</li>
+</ul>
+</div>
+<h2 id="1">Preamble to the 314 Laboratory</h2>
+<p>Throughout the Ocean Sciences core program, we will keep revisiting Saanich Inlet. In 314, we are interested in water column properties.</p>
+<p>The final project for 314 will involve looking at Saanich Inlet and surrounding waters and discussing why we see what we do. This lab is designed as a tutorial to help you with data analysis and presentation for your project. We will work on making good graphics and explaining the story behind each graph. Some of the data that we use in the lab will be the same data you use in your final project. Please use this opportunity to get a head start on your project!</p>
+<p>The first part of each lab session will include a review of the previous week's lab and a guided tutorial covering the new material. In the second half of the time, you'll be expected to start working on an assignment to turn in. You may work collaboratively, but everyone must hand in their own assignment. Assignments are due in the Brightspace dropbox at 4 pm on the day before your next lab (i.e. Sunday at 4 pm for Monday labs, Tuesday at 4 pm for Wednesday labs).</p>
+<p>It will be very useful to install MATLAB on your personal laptop. Instructions are available at: <a href="https://www.mathworks.com/academia/tah-portal/university-of-victoria-31110150.html">https://www.mathworks.com/academia/tah-portal/university-of-victoria-31110150.html</a> .</p>
+<p>Alternatively, if you do not want to or are unable to install MATLAB on your personal computer, you can access MATLAB Online by signing up for a Mathworks account with your UVic email address: <a href="https://www.mathworks.com/products/matlab-online.html">https://www.mathworks.com/products/matlab-online.html</a>
+</p>
+<p>You will also need to copy the "common" directory (contains functions and color maps that do not come with the standard MATLAB installation) to your laptop in order to use the lab tutorials. See the "Lab 1" section for the common directory download link.</p>
+<p>Initial Lab Handout available as a PDF here: <a href="https://web.uvic.ca/~evamegan/314Labs/Lab0info/314LabIntroHandout_Sep2024.pdf">https://web.uvic.ca/~evamegan/314Labs/Lab0info/314LabIntroHandout_Sep2024.pdf</a>
+</p>
+<p>
+<b>Senior Lab Instructor:</b> Eva MacLennan <a href="mailto:evamegan@uvic.ca">evamegan@uvic.ca</a> <b>TAs:</b> Becky Brooks: <a href="mailto:rebeccaabrooks@uvic.ca">rebeccaabrooks@uvic.ca</a>; Jamie Daniel: <a href="mailto:jamiedaniel@uvic.ca">jamiedaniel@uvic.ca</a>
+</p>
+<p>Labs will be clickable links a day before the lab. Keys will be available after the lab is marked.</p>
+<h2 id="4">Strickland cruise data are now available!</h2>
+<p>Download <a href="https://web.uvic.ca/~evamegan/314Labs/2024CruiseData.zip">https://web.uvic.ca/~evamegan/314Labs/2024CruiseData.zip</a>
+</p>
+<p>The data is separated by cruise day (September 18th and September 25th). There are a lot of files in there in case you get curious, but the most useful ones, and the ones I'd direct you to, are CtdGridNew.mat or CtdGridNew.nc.</p>
+<h2 id="6">Fall 2024</h2>
+<h2 id="7">Week of Sept 9 - Lab 1</h2>
+<p>
+<b>Introduction to MATLAB</b>
+</p>
+<p>
+<a href="https://web.uvic.ca/~evamegan/314Labs/Lab1/Lab1.html">https://web.uvic.ca/~evamegan/314Labs/Lab1/Lab1.html</a>
+</p>
+<p>Download <a href="https://web.uvic.ca/~evamegan/314Labs/Lab1/Lab1.zip">https://web.uvic.ca/~evamegan/314Labs/Lab1/Lab1.zip</a>
+</p>
+<p>Download <a href="https://web.uvic.ca/~evamegan/314Labs/common/common.zip">https://web.uvic.ca/~evamegan/314Labs/common/common.zip</a>
+</p>
+<p>Key(code):  <a href="https://web.uvic.ca/~evamegan/314Labs/Lab1/Lab1KEY.m">https://web.uvic.ca/~evamegan/314Labs/Lab1/Lab1KEY.m</a>
+</p>
+<h2 id="9">Week of Sept 16 - Lab 2</h2>
+<p>
+<b>Times and Graphs</b>
+</p>
+<p>
+<a href="https://web.uvic.ca/~evamegan/314Labs/Lab2/Lab2.html">https://web.uvic.ca/~evamegan/314Labs/Lab2/Lab2.html</a>
+</p>
+<p>Download <a href="https://web.uvic.ca/~evamegan/314Labs/Lab2/Lab2.zip">https://web.uvic.ca/~evamegan/314Labs/Lab2/Lab2.zip</a> Download the compressed folder Lab2.zip and place it in your Documents/MATLAB directory. Uncompress the folder by right-clicking on it and clicking "Extract All".</p>
+<p>Key(code):  <a href="https://web.uvic.ca/~evamegan/314Labs/Lab2/Lab2KEY.m">https://web.uvic.ca/~evamegan/314Labs/Lab2/Lab2KEY.m</a>
+</p>
+<h2 id="11">Wed Sept 18 OR Wed Sept 25 - Field Exercise</h2>
+<p>Basic cruise details available on Brightspace.</p>
+<pre class="language-matlab">Watch <span class="string">for</span> <span class="string">updates</span> <span class="string">in</span> <span class="string">class/lab</span> <span class="string">and</span> <span class="string">posted</span> <span class="string">to</span> <span class="string">Brightspace!</span>
+</pre>
+<h2 id="13">Mon Sept 23 (B02) and Wed Oct 2 (B01) - Lab 3</h2>
+<p>
+<b>Structures and ONC Data</b>
+</p>
+<p>
+<a href="http://web.uvic.ca/~evamegan/314Labs/Lab3/Lab3.html">http://web.uvic.ca/~evamegan/314Labs/Lab3/Lab3.html</a>
+</p>
+<p>The data files and .m file for this lab can be found on Brightspace.</p>
+<pre class="codeinput">
+<span class="comment">%</span>
+<span class="comment">% Key(code):  https://web.uvic.ca/~evamegan/314Labs/Lab3/Lab3KEY.m</span>
+</pre>
+<h2 id="15">Week of Oct 7 - Lab 4</h2>
+<p>
+<b>Regional Conditions - part 1</b>
+</p>
+<p>
+<a href="https://web.uvic.ca/~evamegan/314Labs/Lab4/Lab4.html">https://web.uvic.ca/~evamegan/314Labs/Lab4/Lab4.html</a>
+</p>
+<p>The .m and .mat files for this lab can be found on Brightspace.</p>
+<pre class="codeinput">
+<span class="comment">%</span>
+<span class="comment">% Key(code):  https://web.uvic.ca/~evamegan/314Labs/Lab4/Lab4KEY.m</span>
+<span class="comment">%</span>
+<span class="comment">%</span>
+</pre>
+<h2 id="17">Wed Oct 16 (B01) and Mon Oct 21 (B02) - Lab 5</h2>
+<p>
+<b>Regional Conditions - part 2</b>
+</p>
+<p>
+<a href="https://web.uvic.ca/~evamegan/314Labs/Lab5/Lab5.html">https://web.uvic.ca/~evamegan/314Labs/Lab5/Lab5.html</a>
+</p>
+<p>Download <a href="https://web.uvic.ca/~evamegan/314Labs/Lab5/Lab5.m">https://web.uvic.ca/~evamegan/314Labs/Lab5/Lab5.m</a>
+</p>
+<p>Download <a href="https://web.uvic.ca/~evamegan/314Labs/Lab5/StationLocation.mat">https://web.uvic.ca/~evamegan/314Labs/Lab5/StationLocation.mat</a>
+</p>
+<p>Download <a href="https://web.uvic.ca/~evamegan/314Labs/Lab5/SViCoast.mat">https://web.uvic.ca/~evamegan/314Labs/Lab5/SViCoast.mat</a>
+</p>
+<p>Download <a href="https://web.uvic.ca/~evamegan/314Labs/Lab5/BCRegion_sm.mat">https://web.uvic.ca/~evamegan/314Labs/Lab5/BCRegion_sm.mat</a>
+</p>
+<p>Key(example map):  <a href="https://web.uvic.ca/~evamegan/314Labs/Lab5/Lab5KEY.m">https://web.uvic.ca/~evamegan/314Labs/Lab5/Lab5KEY.m</a>
+</p>
+<h2 id="19">Wed Oct 23 (B01) and Mon Oct 28 (B02) - Lab 6</h2>
+<p>
+<b>The Vertical Realm</b>
+</p>
+<p>
+<a href="https://web.uvic.ca/~evamegan/314Labs/Lab6/Lab6.html">https://web.uvic.ca/~evamegan/314Labs/Lab6/Lab6.html</a>
+</p>
+<p>Download <a href="https://web.uvic.ca/~evamegan/314Labs/Lab6/Lab6.zip">https://web.uvic.ca/~evamegan/314Labs/Lab6/Lab6.zip</a>
+</p>
+<p>Key(code):  <a href="https://web.uvic.ca/~evamegan/314Labs/Lab6/Lab6KEY.m">https://web.uvic.ca/~evamegan/314Labs/Lab6/Lab6KEY.m</a>
+</p>
+<h2 id="20">Wed Oct 30 (B01) and Mon Nov 4 (B02) - Lab 7</h2>
+<p>
+<b>Saanich Time Series Data</b>
+</p>
+<p>
+<a href="https://web.uvic.ca/~evamegan/314Labs/Lab7/Lab7.html">https://web.uvic.ca/~evamegan/314Labs/Lab7/Lab7.html</a>
+</p>
+<p>Download <a href="https://web.uvic.ca/~evamegan/314Labs/Lab7/Lab7.zip">https://web.uvic.ca/~evamegan/314Labs/Lab7/Lab7.zip</a>
+</p>
+<p>Key(code):  <a href="https://web.uvic.ca/~evamegan/314Labs/Lab7/Lab7KEY.m">https://web.uvic.ca/~evamegan/314Labs/Lab7/Lab7KEY.m</a>
+</p>
+<p>Monday's section (B02) will also have the project orientation today.</p>
+<h2 id="22">Wed Nov 6 - Project Orientation</h2>
+<p>
+<b>An introduction to the datasets available to you for your final project</b>
+</p>
+<p>Your TA will be available.</p>
+<h2 id="24">Week of Nov 11 - Reading Break</h2>
+<p>
+<b>No labs this week</b>
+</p>
+<h2 id="26">Wed Nov 23 through Wed Nov 30 - Open Labs</h2>
+<p>
+<b>Open labs to work on your final project</b>
+</p>
+<p>Your TA will be available.</p>
+<h2 id="27">Useful Links</h2>
+<div>
+<ul>
+<li>Ocean Sciences Minor - Cruise Data Archive: <a href="http://web.uvic.ca/~cbrant/OSM/OSMCruiseData/">http://web.uvic.ca/~cbrant/OSM/OSMCruiseData/</a>
+</li>
+<li>MATLAB online tutorials: <a href="http://www.mathworks.com/academia/student_center/tutorials/">http://www.mathworks.com/academia/student_center/tutorials/</a>
+</li>
+<li>ONC-VENUS project: <a href="http://oceannetworks.ca">http://oceannetworks.ca</a>
+</li>
+<li>Tides Prediction website <a href="http://www.tides.gc.ca/eng/station?type=0&amp;date=2019%2F09%2F23&amp;sid=7277&amp;tz=UTC&amp;pres=1">http://www.tides.gc.ca/eng/station?type=0&amp;date=2019%2F09%2F23&amp;sid=7277&amp;tz=UTC&amp;pres=1</a>
+</li>
+</ul>
+</div>
+<p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2024a</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+%% EOS 314 - Physical Oceanography Laboratory
+%
+%% Preamble to the 314 Laboratory
+%%
+% Throughout the Ocean Sciences core program, we will keep revisiting
+% Saanich Inlet. In 314, we are interested in water column properties.
+%
+% The final project for 314 will involve looking at Saanich Inlet and
+% surrounding waters and discussing why we see what we do. This lab is
+% designed as a tutorial to help you with data analysis and presentation
+% for your project. We will work on making good graphics and explaining the
+% story behind each graph. Some of the data that we use in the lab will be
+% the same data you use in your final project. Please use this opportunity
+% to get a head start on your project!
+%
+% The first part of each lab session will include a review of the previous
+% week's lab and a guided tutorial covering the new material. In the second
+% half of the time, you'll be expected to start working on an assignment to
+% turn in. You may work collaboratively, but everyone must hand in their
+% own assignment. Assignments are due in the Brightspace dropbox at 4 pm on
+% the day before your next lab (i.e. Sunday at 4 pm for Monday labs,
+% Tuesday at 4 pm for Wednesday labs).
+%
+% It will be very useful to install MATLAB on your personal laptop.
+% Instructions are available at: https://www.mathworks.com/academia/tah-portal/university-of-victoria-31110150.html .
+% 
+% Alternatively, if you do not want to or are unable to install MATLAB on
+% your personal computer, you can access MATLAB Online by signing up for a
+% Mathworks account with your UVic email address:
+% https://www.mathworks.com/products/matlab-online.html
+%
+% You will also need to copy the "common" directory (contains functions and
+% color maps that do not come with the standard MATLAB installation) to
+% your laptop in order to use the lab tutorials. See the "Lab 1" section
+% for the common directory download link.
+%
+% Initial Lab Handout available as a PDF here:
+% https://web.uvic.ca/~evamegan/314Labs/Lab0info/314LabIntroHandout_Sep2024.pdf
+%
+% *Senior Lab Instructor:* Eva MacLennan evamegan@uvic.ca
+% *TAs:* Becky Brooks: rebeccaabrooks@uvic.ca; 
+% Jamie Daniel: jamiedaniel@uvic.ca
+%  
+%% 
+% Labs will be clickable links a day before the lab. Keys will be
+% available after the lab is marked.
+
+%% Strickland cruise data are now available!
+%
+% Download https://web.uvic.ca/~evamegan/314Labs/2024CruiseData.zip
+%
+% The data is separated by cruise day (September 18th and September
+% 25th). There are a lot of files in there in case you get curious, but the
+% most useful ones, and the ones I'd direct you to, are CtdGridNew.mat or 
+% CtdGridNew.nc. 
+
+%%
+%% Fall 2024
+%% Week of Sept 9 - Lab 1 
+% *Introduction to MATLAB*
+%
+% https://web.uvic.ca/~evamegan/314Labs/Lab1/Lab1.html
+%
+% Download https://web.uvic.ca/~evamegan/314Labs/Lab1/Lab1.zip
+%
+% Download https://web.uvic.ca/~evamegan/314Labs/common/common.zip
+%
+% Key(code):  https://web.uvic.ca/~evamegan/314Labs/Lab1/Lab1KEY.m
+
+%%
+%% Week of Sept 16 - Lab 2 
+% *Times and Graphs*
+%
+% https://web.uvic.ca/~evamegan/314Labs/Lab2/Lab2.html
+%
+% Download https://web.uvic.ca/~evamegan/314Labs/Lab2/Lab2.zip Download
+% the compressed folder Lab2.zip and place it in your Documents/MATLAB
+% directory. Uncompress the folder by right-clicking on it and clicking
+% "Extract All".
+%
+% Key(code):  https://web.uvic.ca/~evamegan/314Labs/Lab2/Lab2KEY.m
+%%
+%% Wed Sept 18 OR Wed Sept 25 - Field Exercise
+% Basic cruise details available on Brightspace.
+%
+%   Watch for updates in class/lab and posted to Brightspace!
+%
+%%
+%% Mon Sept 23 (B02) and Wed Oct 2 (B01) - Lab 3
+% *Structures and ONC Data*
+%
+% http://web.uvic.ca/~evamegan/314Labs/Lab3/Lab3.html
+%
+% The data files and .m file for this lab can be found on Brightspace.
+
+%
+% Key(code):  https://web.uvic.ca/~evamegan/314Labs/Lab3/Lab3KEY.m
+%%
+%% Week of Oct 7 - Lab 4 
+% *Regional Conditions - part 1*
+%
+% https://web.uvic.ca/~evamegan/314Labs/Lab4/Lab4.html
+%
+% The .m and .mat files for this lab can be found on Brightspace.
+
+%
+% Key(code):  https://web.uvic.ca/~evamegan/314Labs/Lab4/Lab4KEY.m
+%
+%
+%%
+%% Wed Oct 16 (B01) and Mon Oct 21 (B02) - Lab 5 
+% *Regional Conditions - part 2*
+%
+% https://web.uvic.ca/~evamegan/314Labs/Lab5/Lab5.html
+%
+% Download https://web.uvic.ca/~evamegan/314Labs/Lab5/Lab5.m
+%
+% Download https://web.uvic.ca/~evamegan/314Labs/Lab5/StationLocation.mat
+%
+% Download https://web.uvic.ca/~evamegan/314Labs/Lab5/SViCoast.mat
+%
+% Download https://web.uvic.ca/~evamegan/314Labs/Lab5/BCRegion_sm.mat
+%
+% Key(example map):  https://web.uvic.ca/~evamegan/314Labs/Lab5/Lab5KEY.m
+%
+%
+%%
+%% Wed Oct 23 (B01) and Mon Oct 28 (B02) - Lab 6  
+% *The Vertical Realm*
+%
+% https://web.uvic.ca/~evamegan/314Labs/Lab6/Lab6.html
+%
+% Download https://web.uvic.ca/~evamegan/314Labs/Lab6/Lab6.zip
+%
+% Key(code):  https://web.uvic.ca/~evamegan/314Labs/Lab6/Lab6KEY.m
+%
+%% Wed Oct 30 (B01) and Mon Nov 4 (B02) - Lab 7
+% *Saanich Time Series Data*
+%
+% https://web.uvic.ca/~evamegan/314Labs/Lab7/Lab7.html
+%
+% Download https://web.uvic.ca/~evamegan/314Labs/Lab7/Lab7.zip
+%
+% Key(code):  https://web.uvic.ca/~evamegan/314Labs/Lab7/Lab7KEY.m
+%
+% Monday's section (B02) will also have the project orientation today.
+%
+%%
+%% Wed Nov 6 - Project Orientation
+% *An introduction to the datasets available to you for your final project*
+%
+% Your TA will be available.
+%
+%%
+%% Week of Nov 11 - Reading Break
+% *No labs this week*
+% 
+%%
+%%  Wed Nov 23 through Wed Nov 30 - Open Labs
+% *Open labs to work on your final project*
+%
+% Your TA will be available.
+%
+
+%% Useful Links
+% * Ocean Sciences Minor - Cruise Data Archive:
+% http://web.uvic.ca/~cbrant/OSM/OSMCruiseData/
+% * MATLAB online tutorials:
+% http://www.mathworks.com/academia/student_center/tutorials/
+% * ONC-VENUS project: http://oceannetworks.ca
+% * Tides Prediction website
+% http://www.tides.gc.ca/eng/station?type=0&date=2019%2F09%2F23&sid=7277&tz=UTC&pres=1
+
+##### SOURCE END #####
+-->
+</body>
+</html>

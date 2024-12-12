@@ -1,0 +1,586 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>Lab 3: Intro: MATLAB structures and ONC data</title>
+<meta name="generator" content="MATLAB 24.1">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2024-09-04">
+<meta name="DC.source" content="Lab3.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style>
+</head>
+<body>
+<div class="content">
+<h1>Lab 3: Intro: MATLAB structures and ONC data</h1>
+<!--introduction-->
+<!--/introduction-->
+<h2>Contents</h2>
+<div>
+<ul>
+<li>
+<a href="#1">Objective</a>
+</li>
+<li>
+<a href="#2">Source</a>
+</li>
+<li>
+<a href="#3">Commands we will use</a>
+</li>
+<li>
+<a href="#4">1. ONC / VENUS data</a>
+</li>
+<li>
+<a href="#19">2. Subplots - a way to visualize data on the same timescale</a>
+</li>
+<li>
+<a href="#20">3. How do I download my own data from ONC?</a>
+</li>
+<li>
+<a href="#24">ASSIGNMENT</a>
+</li>
+<li>
+<a href="#25">NOTE</a>
+</li>
+</ul>
+</div>
+<h2 id="1">Objective</h2>
+<p>The objective of this lab is to continue using the MATLAB computer program and to help you understand how MATLAB processes time data. You will also get a brief introduction to data available from the Ocean Networks Canada VENUS project in Saanich Inlet.</p>
+<h2 id="2">Source</h2>
+<p>You should be able to open and edit the file that made this html document. From within MATLAB, open Lab3.m. <i>Do not just double-click the file from an Explorer window.</i>
+</p>
+<h2 id="3">Commands we will use</h2>
+<p>
+<tt>load, end, max, mean, now, datestr, datenum, plot, ylabel, datetick, xlabel, subplot, save, print</tt>
+</p>
+<h2 id="4">1. ONC / VENUS data</h2>
+<p>We'll now switch to looking at a set of data from the Ocean Networks Canada VENUS project from 18 Sep 2018 that I have downloaded for you. Later in the lab, you'll download your own data!</p>
+<p>We will be looking at the temperature, salinity and pressure for 18 Sep 2018 from the VENUS station in Saanich Inlet. <b>Note:</b> The mat files you will be working with have been downloaded for you from the Ocean Networks Canada website <a href="http://oceannetworks.ca/">http://oceannetworks.ca/</a>
+</p>
+<p>VENUS provides data in a MATLAB format called a <b>structure</b>. We will be using structures extensively to provide data to you. Structures are a way of packaging data into a saved data file. Below, <tt>data</tt> is the structure and it contains many pieces of information, including data and quality control flags. There is another structure, <tt>metadata</tt>, which contains information relating to the sensor that acquired the data.</p>
+<p>The definition of a <tt>structure</tt> <a href="http://www.mathworks.com/help/matlab/structures.html">from MATLAB</a>:</p>
+<p>
+<b>Structures:</b> Arrays with named fields that can contain data of varying types and sizes. A structure array is a data type that groups related data using data containers called fields. Each field can contain any type of data. Access data in a structure using dot notation of the form structName.fieldName.</p>
+<p>The are two main pieces of information in the ONC data structures that we will be working with:</p>
+<div>
+<ul>
+<li>
+<tt>dat</tt>: this corresponds to the sensor measurements. In the case of the data I have downloaded for you, this is either temperature or salinity.</li>
+<li>
+<tt>time</tt>: the timestamps that correspond with each value in <tt>dat</tt>
+</li>
+</ul>
+</div>
+<p>Let's first take a look at the temperature data for 18 Sep 2018 from the VENUS station in Saanich Inlet (~96 m depth).</p>
+<pre class="codeinput">clear <span class="comment">%all previous variables are now cleared from memory.</span>
+
+load(<span class="string">'PatriciaBay_SaanichInletVENUSInstrumentPlatform_variables_SeaWaterTemperature_20180918T000001Z_20180918T235901Z-NaN_clean'</span>)
+</pre>
+<p>Have a look at your workspace window. You now have two entries: <tt>data</tt> and <tt>metadata</tt>. Both are structures. Notice the icon, and also the Value: <i>1x1 struct</i>.</p>
+<p>To see what is packaged inside the structure, you can simply type <tt>data</tt> at the command prompt.</p>
+<pre class="codeinput">data
+</pre>
+<pre class="codeoutput">
+data = 
+
+  struct with fields:
+
+                  sensorID: 21115
+                sensorName: 'Temperature'
+                sensorCode: 'Temperature'
+         sensorDescription: 'Temperature: sea water'
+                sensorType: 'Sea Water Temperature'
+              sensorTypeID: 8
+                     units: 'C'
+       isEngineeringSensor: 0
+          sensorDerivation: 'Not Derived'
+              propertyCode: 'seawatertemperature'
+    isMobilePositionSensor: 0
+                  deviceID: 23956
+         searchDateNumFrom: 737321
+           searchDateNumTo: 737322
+              samplePeriod: 60
+      samplePeriodDateFrom: 7.3732e+05
+        samplePeriodDateTo: 7.3732e+05
+                sampleSize: 1
+              resampleType: 'No resampling'
+       resampleDescription: 'No resampling'
+        resamplePeriod_sec: NaN
+            resampleTypeID: NaN
+        dataProductOptions: 'Data Gaps: Fill missing/bad data with NaNs (Not a Number). Quality Control: Clean Data (replace data that fail QAQC checks).'
+       qaqcFlagDescription: 'QAQC Flag: 0 = no test; 1 = passed all tests or is a manual pass - good; 2 = failed at least one minor test (location-based levels) - probably good; 3 = failed at least one location-based special test - probably bad; 4 = failed at least one instrument or global/observatory test or manual fail - bad; 6 = Insufficient valid data for reliable down-sampling - bad; 7 = Averaged value - passed all tests - good; 8 = Interpolated value - passed all tests - good; 9 = Filled data gap - missing value (NaN). See metadata and documentation for more information.'
+                      time: [1440&times;1 double]
+                       dat: [1440&times;1 double]
+                 qaqcFlags: [1440&times;1 int8]
+           dataDateNumFrom: 7.3732e+05
+             dataDateNumTo: 7.3732e+05
+           samplesExpected: 1440
+           samplesReceived: 1440
+               Calibration: [1&times;1 struct]
+
+</pre>
+<p>Notice how much information is packed inside that structure! There are 32 different fields, some of which are just information (e.g. <tt>data.units</tt>), and some of which contain numbers...</p>
+<p>What is the timestamp on the first data point in the data set?</p>
+<pre class="codeinput">datestr(data.samplePeriodDateFrom)
+</pre>
+<pre class="codeoutput">
+ans =
+
+    '18-Sep-2018 00:00:01'
+
+</pre>
+<p>All datasets downloaded from Ocean Networks Canada will have this same format and will follow the same naming conventions. We can tell what data is in the file by looking at <tt>data.sensorName</tt> and the data can be found in <tt>data.dat</tt>
+</p>
+<p>Let's look at the first three values of data.dat</p>
+<pre class="codeinput">data.dat(1:3)
+</pre>
+<pre class="codeoutput">
+ans =
+
+    9.6842
+    9.6830
+    9.6804
+
+</pre>
+<p>These are temperatures, and the units are found in <tt>data.units</tt> ('C'). What about the first three values of <tt>data.time</tt>?</p>
+<pre class="codeinput">datestr(data.time(1:3))
+</pre>
+<pre class="codeoutput">
+ans =
+
+  3&times;20 char array
+
+    '18-Sep-2018 00:00:01'
+    '18-Sep-2018 00:01:01'
+    '18-Sep-2018 00:02:01'
+
+</pre>
+<p>Now let's load the salinity data file.</p>
+<pre class="codeinput">load(<span class="string">'PatriciaBay_SaanichInletVENUSInstrumentPlatform_variables_Salinity_20180918T000001Z_20180918T235901Z-NaN_clean'</span>) <span class="comment">% units are PSU</span>
+</pre>
+<p>
+<b>NOTE</b>: we still only have two structures in the workspace! Because all of the ONC data has the same naming convention, every time you load a datafile you will OVERWRITE the old data. Thus, since we are working with multiple measured parameters, we need to load the data for the measurement of interest, make a copy of the data we want to use, before loading the next data file.</p>
+<p>To make a copy of the data we want to use, first we load the structure</p>
+<pre class="codeinput">load(<span class="string">'PatriciaBay_SaanichInletVENUSInstrumentPlatform_variables_SeaWaterTemperature_20180918T000001Z_20180918T235901Z-NaN_clean'</span>); <span class="comment">% units are deg C</span>
+</pre>
+<p>Then we pull the data out of the structure by making new arrays called <tt>time</tt> and <tt>temp</tt>:</p>
+<pre class="codeinput">time=data.time;
+temp=data.dat;
+</pre>
+<p>This way, when we load the next ONC datafile, we will still have the temperature data available in our workspace. Another advantage to this is that we are also essentially creating a shortcut... For example, <tt>time</tt> is much shorter to type than <tt>data.time</tt>, but they both now contain the same values.</p>
+<p>Next, we can re-load the salinity data file, and copy the salinity data into a new array called <tt>sal</tt>:</p>
+<pre class="codeinput">load(<span class="string">'PatriciaBay_SaanichInletVENUSInstrumentPlatform_variables_Salinity_20180918T000001Z_20180918T235901Z-NaN_clean'</span>); <span class="comment">% units are PSU</span>
+sal=data.dat;
+</pre>
+<p>
+<b>NOTE:</b> I've only made one copy of the <tt>time</tt> data since I know all these files have exactly the same time information. I specified that I wanted all files to start at midnight on 18 Sept and continue until midnight on 19 Sept. Each data file has 1440 entries - that's 1 sample per minute for 24 hours.</p>
+<h2 id="19">2. Subplots - a way to visualize data on the same timescale</h2>
+<p>Since we know these data have the same time scale, let's plot them with one right above the other, so the two x-axes line up exactly. We can do this using subplots.</p>
+<p>From the MATLAB documentation: <tt>subplot(m,n,p)</tt> divides the current figure into an m-by-n grid and creates an axes for a subplot in the position specified by p. MATLAB&reg; numbers its subplots by row, such that the first subplot is the first column of the first row, the second subplot is the second column of the first row, and so on.</p>
+<p>Let's create a set of time series plots with both variables (T,S) against time. We want to make sure to label all appropriate axes and try to make our plot as "readable" as possible.</p>
+<pre class="codeinput">figure (3) <span class="comment">% opens a figure window</span>
+clf <span class="comment">% clears the contents of the current figure window</span>
+
+<span class="comment">%Define a plot space - there will be two rows, one column, and this will be the first plot</span>
+subplot(2,1,1)
+plot(time,temp)
+datetick(<span class="string">'x'</span>,15) <span class="comment">% what do the inputs on datetick mean?</span>
+ylabel(<span class="string">'T [^oC]'</span>); <span class="comment">% what does the "^" symbol in this expression do?</span>
+axis <span class="string">tight</span>
+
+subplot(2,1,2)  <span class="comment">% What plot does this specify?</span>
+plot(time, sal)
+datetick(<span class="string">'x'</span>,15)
+ylabel(<span class="string">'Salinity [psu]'</span>);
+xlabel(datestr(datenum(time(1,:)),1)) <span class="comment">% what does "datestr" do?</span>
+axis <span class="string">tight</span>
+</pre>
+<img vspace="5" hspace="5" src="Lab3_01.png" alt=""> <h2 id="20">3. How do I download my own data from ONC?</h2>
+<p>I've provided you with two data files - containing temperature and salinity. But I'd like you to look at four properties - T, S, DO, and P.</p>
+<p>Go to <a href="https://data.oceannetworks.ca/DataSearch">https://data.oceannetworks.ca/DataSearch</a>
+</p>
+<p>In the <i><b>Sort by</b></i> dropdown menu, select <i><b>Properties By Location</b></i>.</p>
+<p>Navigate to: <b>Pacific</b> &gt; <b>Salish Sea</b> &gt; <b>Saanich Inlet</b> &gt; <b>Patricia Bay</b> &gt; <b>Saanich Inlet VENUS Instrument Platform</b> &gt; <b>Pressure</b>
+</p>
+<p>Then click the RED <i><b>Select Data Product</b></i> link over on the right side of your screen.</p>
+<p>We want the Pressure data, in <i>MAT 7</i> format.</p>
+<p>Enter the time range of interest:</p>
+<p>
+<i>Date From (UTC):</i> 18-Sep-2018 00:00:00</p>
+<p>
+<i>Date To (UTC):</i> 19-Sep-2018 00:00:00</p>
+<p>You have 9 different options for the format of your data, sorted into 3 groups. We want to download data from the <b>Time Series Scalar Data</b> group. There are 4 options: <tt>.csv</tt>, <tt>.mat</tt>, <tt>.txt</tt>, and <tt>.json</tt>. We will use MATLAB, but you may wish to use a <tt>.csv</tt> file if you want to use Excel for example.</p>
+<p>There are also <b>Time Series Scalar Plots</b> that are plots made by VENUS, either as a png or pdf file. These plots are good if you just want a quick graphical view, but if you actually want to examine the pressure data, you'll need to choose one of the data formats.</p>
+<p>Under the <b>Time Series Scalar Data</b>, choose <i>MAT 7</i>, the MATLAB Version 7 <tt>.mat</tt> file.</p>
+<p>Click the red <i><b>Add to Cart</b></i>, and then click <i><b>Next</b></i>, then <i><b>Checkout All</b></i>.</p>
+<p>The file will be generated for you (wait a minute or two!) and a link will show up on the right of the page. We want the <tt>.mat</tt> file, not the Metadata (though that's interesting, too.) Click on the file name and download it to your computer. Put it into a directory that you can find and rename it to something that makes sense to you. I'll use <tt>SepP.mat</tt> for mine. Make sure you keep the <tt>.mat</tt> extension.</p>
+<h2 id="24">ASSIGNMENT</h2>
+<p>
+<b>Part 1: Subplotting Figures</b>
+</p>
+<p>Go to the ONC site and download oxygen and pressure data sets to match the times of the temperature and salinity already provided. (see instructions in Part 3 above).</p>
+<p>Make a set of subplots from the Saanich Inlet VENUS Instrument Platform data for 18 Sep 2018 (i.e. the data files from section 1). Your subplots should contain the temperature data, salinity data, oxygen data, and pressure anomalies plotted versus time. Make sure to label all appropriate axes and try to make your plot as "readable" as possible. Insert your figure into a Word document. Add a caption to the figure describing the subplots and where the data came from (i.e. Figure 1:....). Be sure to include a sufficient amount of detail here - where are the data coming from? what depth? Define any abbreviations or simple calculations you have done. Don't use <tt>title</tt> for this - there's not enough room to write a good figure caption. Rather, add the text in Word.</p>
+<p>Below the figure, answer the following questions about the data:</p>
+<p>
+<b>Q1</b>. Go online and find information about the Ocean Networks Canada Saanich installation (the ONC website is a good place to start). Describe the location/environment of the Saanich Venus Instrument Platform, highlighting the node we are using in Patricia Bay and how it relates to the bathymetry of Saanich Inlet. Be specific - describe the location of the platform in Saanich Inlet. Do you think data obtained from the Patricia Bay node is representative of the conditions in the whole of Saanich Inlet? Why or why not?</p>
+<p>
+<b>Q2</b>. Look at the pressure anomaly data. What signal are you seeing in these data/what does the variation in the data represent? Describe the curve. What is the range of these data; the period? Remember - these data are obtained by a stationary CTD mounted to the bottom of the ocean.</p>
+<p>
+<b>Part 2: Code</b>
+</p>
+<p>Below your answers to questions 1 and 2, put a copy of the code you used to produce your figures. You can just cut and paste your code into Word.</p>
+<h2 id="25">NOTE</h2>
+<p>You will be marked on 1) your answers to the questions; 2) the appearance of your figures - do they tell a story, and tell that story well?, 3) your ability to follow directions; and 4) the elegance of your code. Keep things neat and organized. Use % to make comment lines to explain what you are doing. Use the semicolon ; after commands to supress unnecessary output. Make sure you follow the file name conventions I've asked for.</p>
+<p>You need to hand in 1 file to the Lab 3 assignment dropbox on Brightspace:</p>
+<div>
+<ul>
+<li>
+<tt>Lab3Yourlastname.doc</tt> : a <b>WORD document</b> containing your figure, the answer to questions 1-2, and a copy of the code you used to produce your figures. (Just cut and paste your code into Word).</li>
+</ul>
+</div>
+<p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2024a</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+%% Lab 3: Intro: MATLAB structures and ONC data
+
+%% Objective
+% The objective of this lab is to continue using the MATLAB computer
+% program and to help you understand how MATLAB processes time data. You
+% will also get a brief introduction to data available from the Ocean
+% Networks Canada VENUS project in Saanich Inlet.
+%
+%% Source
+% You should be able to open and edit the file that made this html
+% document. From within MATLAB, open Lab3.m. _Do not just double-click the
+% file from an Explorer window._
+%% Commands we will use
+% |load, end, max, mean, now, datestr, datenum, plot, ylabel, datetick,
+% xlabel, subplot, save, print|
+%% 1. ONC / VENUS data
+%%
+% We'll now switch to looking at a set of data from the Ocean Networks
+% Canada VENUS project from 18 Sep 2018 that I have downloaded for you.
+% Later in the lab, you'll download your own data!
+%
+% We will be looking at the temperature, salinity and pressure for 18 Sep 2018 from the
+% VENUS station in Saanich Inlet. *Note:* The mat files you will be working with
+% have been downloaded for you from the Ocean Networks Canada website
+% http://oceannetworks.ca/
+%
+% VENUS provides data in a MATLAB format called a *structure*. We will be
+% using structures extensively to provide data to you. Structures are a way
+% of packaging data into a saved data file. Below, |data| is the structure
+% and it contains many pieces of information, including data and quality
+% control flags. There is another structure, |metadata|, which contains
+% information relating to the sensor that acquired the data.
+% 
+% The definition of a |structure| <http://www.mathworks.com/help/matlab/structures.html from MATLAB>:
+%
+% *Structures:* Arrays with named fields that
+% can contain data of varying types and sizes. A structure array is a data
+% type that groups related data using data containers called fields. Each
+% field can contain any type of data. Access data in a structure using dot
+% notation of the form structName.fieldName.
+% 
+% The are two main pieces of information in the ONC data structures that 
+% we will be working with:
+%
+% * |dat|: this corresponds to the sensor measurements. In the case of the
+% data I have downloaded for you, this is either temperature or salinity.  
+% * |time|: the timestamps that correspond with each value in |dat|
+%
+% Let's first take a look at the temperature data for 
+% 18 Sep 2018 from the VENUS station in Saanich Inlet (~96 m depth). 
+% 
+%
+%%
+
+clear %all previous variables are now cleared from memory.
+
+load('PatriciaBay_SaanichInletVENUSInstrumentPlatform_variables_SeaWaterTemperature_20180918T000001Z_20180918T235901Z-NaN_clean')
+
+%%
+% Have a look at your workspace window. You now have two entries: |data| and
+% |metadata|. Both are structures. Notice the icon, and also the Value: _1x1
+% struct_. 
+%
+% To see what is packaged inside the structure, you can simply type
+% |data| at the command prompt.
+
+data
+
+%%
+% Notice how much information is packed inside that structure! There are 32
+% different fields, some of which are just information (e.g. |data.units|), and
+% some of which contain numbers...
+%%
+% What is the timestamp on the first data point in the data set?
+
+datestr(data.samplePeriodDateFrom)
+
+%%
+% All datasets downloaded from Ocean Networks Canada will have this same
+% format and will follow the same naming conventions. We can tell what data
+% is in the file by looking at |data.sensorName| and the data can be found in
+% |data.dat|
+%%
+% Let's look at the first three values of data.dat
+data.dat(1:3)
+%%
+% These are temperatures, and the units are found in |data.units| ('C'). What
+% about the first three values of |data.time|?
+datestr(data.time(1:3))
+
+%%
+% Now let's load the salinity data file.
+load('PatriciaBay_SaanichInletVENUSInstrumentPlatform_variables_Salinity_20180918T000001Z_20180918T235901Z-NaN_clean') % units are PSU
+
+
+%%
+% *NOTE*: we still only have two structures in the workspace! Because all
+% of the ONC data has the same naming convention, every time you load a datafile
+% you will OVERWRITE the old data. Thus, since we are working with multiple measured
+% parameters, we need to load the data for the measurement of interest, make
+% a copy of the data we want to use, before loading the next data file.
+%
+% To make a copy of the data we want to use, first we load the structure
+load('PatriciaBay_SaanichInletVENUSInstrumentPlatform_variables_SeaWaterTemperature_20180918T000001Z_20180918T235901Z-NaN_clean'); % units are deg C
+
+%%
+% Then we pull the data out of the structure by making new arrays called 
+% |time| and |temp|:
+
+time=data.time;
+temp=data.dat;
+
+%%
+% This way, when we load the next ONC datafile, we will still have the
+% temperature data available in our workspace. Another advantage to
+% this is that we are also essentially creating a shortcut... For example, 
+% |time| is much shorter to type than |data.time|, but they both now contain
+% the same values.
+%
+% Next, we can re-load the salinity data file, and copy the 
+% salinity data into a new array called |sal|:
+
+
+%%
+
+load('PatriciaBay_SaanichInletVENUSInstrumentPlatform_variables_Salinity_20180918T000001Z_20180918T235901Z-NaN_clean'); % units are PSU
+sal=data.dat;
+
+%%
+% *NOTE:* I've only made one copy of the |time| data since I know all these files
+% have exactly the same time information. I specified that I wanted all
+% files to start at midnight on 18 Sept and continue until midnight on 19
+% Sept. Each data file has 1440 entries - that's 1 sample per minute for 24
+% hours.
+
+%% 2. Subplots - a way to visualize data on the same timescale
+% Since we know these data have the same time scale, let's plot them with
+% one right above the other, so the two x-axes line up exactly. We can do
+% this using subplots.
+%
+% From the MATLAB documentation: |subplot(m,n,p)| divides the current figure
+% into an m-by-n grid and creates an axes for a subplot in the position
+% specified by p. MATLAB® numbers its subplots by row, such that the first
+% subplot is the first column of the first row, the second subplot is the
+% second column of the first row, and so on.
+%
+% Let's create a set of time series plots with both variables (T,S) against
+% time. We want to make sure to label all appropriate axes and try to make our plot
+% as "readable" as possible.
+
+figure (3) % opens a figure window
+clf % clears the contents of the current figure window
+
+%Define a plot space - there will be two rows, one column, and this will be the first plot
+subplot(2,1,1) 
+plot(time,temp)
+datetick('x',15) % what do the inputs on datetick mean?
+ylabel('T [^oC]'); % what does the "^" symbol in this expression do?
+axis tight
+
+subplot(2,1,2)  % What plot does this specify?
+plot(time, sal)
+datetick('x',15)
+ylabel('Salinity [psu]');
+xlabel(datestr(datenum(time(1,:)),1)) % what does "datestr" do?
+axis tight
+
+%% 3. How do I download my own data from ONC? 
+% I've provided you with two data files - containing temperature and
+% salinity. But I'd like you to look at four properties - T, S, DO, and P.
+% 
+% Go to https://data.oceannetworks.ca/DataSearch
+%%
+% In the _*Sort by*_ dropdown menu, select _*Properties By Location*_. 
+%
+%%
+% Navigate to: 
+% *Pacific* > *Salish Sea* > *Saanich Inlet* > *Patricia Bay* > 
+% *Saanich Inlet VENUS Instrument Platform* > *Pressure*
+%
+% Then click the RED _*Select Data Product*_ link over on the right side of your screen. 
+%
+% We want the Pressure data, in _MAT 7_ format. 
+%
+% Enter the time range of interest: 
+%
+% _Date From (UTC):_ 18-Sep-2018  00:00:00
+%
+% _Date To (UTC):_ 19-Sep-2018 00:00:00
+%
+% You have 9 different options for the format of your data, sorted into 3
+% groups. We want to download data from the *Time Series Scalar Data* group. There are 4 
+% options: |.csv|, |.mat|, |.txt|, and |.json|. We will use MATLAB, but you may wish to
+% use a |.csv| file if you want to use Excel for example.
+%
+% There are also *Time Series Scalar Plots* that are plots made by VENUS, 
+% either as a png or pdf file. These plots are good if you just want a 
+% quick graphical view, but if you actually want to examine the pressure data,
+% you'll need to choose one of the data formats.
+% 
+%
+%%
+% Under the *Time Series Scalar Data*, choose _MAT 7_, the MATLAB Version 7 |.mat| file. 
+%
+% Click the red _*Add to Cart*_, and then click _*Next*_, then _*Checkout
+% All*_.
+%
+% The file will be generated for you (wait a minute or two!) and a link
+% will show up on the right of the page. We want the |.mat| file, not the
+% Metadata (though that's interesting, too.) Click on the file name and
+% download it to your computer. Put it into a directory that you can find
+% and rename it to something that makes sense to you. I'll use
+% |SepP.mat| for mine. Make sure you keep the |.mat| extension.
+
+%% ASSIGNMENT
+%
+% *Part 1: Subplotting Figures*
+%
+% Go to the ONC site and download oxygen and pressure data sets to match
+% the times of the temperature and salinity already provided. (see
+% instructions in Part 3 above). 
+%
+% Make a set of subplots from the Saanich Inlet VENUS Instrument Platform
+% data for 18 Sep 2018 (i.e. the data files from section 1). Your subplots
+% should contain the temperature data, salinity data, oxygen data, and
+% pressure anomalies plotted versus time. Make sure to label all
+% appropriate axes and try to make your plot as "readable" as possible.
+% Insert your figure into a Word document. Add a caption to the figure
+% describing the subplots and where the data came from (i.e. Figure
+% 1:....). Be sure to include a sufficient amount of detail here - where
+% are the data coming from? what depth? Define any abbreviations or simple
+% calculations you have done. Don't use |title| for this - there's not
+% enough room to write a good figure caption. Rather, add the text in Word.
+% 
+% Below the figure, answer the following questions about the data:
+%
+% *Q1*. Go online and find information about the Ocean Networks Canada Saanich
+% installation (the ONC website is a good place to start). Describe the location/environment of the Saanich Venus Instrument
+% Platform, highlighting the node we are using in Patricia Bay and how it
+% relates to the bathymetry of Saanich Inlet. Be specific - describe the location
+% of the platform in Saanich Inlet. Do you think data obtained from the
+% Patricia Bay node is representative of the conditions in the whole of Saanich
+% Inlet? Why or why not?
+%
+% *Q2*. Look at the pressure anomaly data. What signal are you seeing in
+% these data/what does the variation in the data represent? Describe the
+% curve. What is the range of these data; the period? Remember - these data
+% are obtained by a stationary CTD mounted to the bottom of the ocean.
+%
+% *Part 2: Code* 
+% 
+% Below your answers to questions 1 and 2, put a copy of the code you used to produce
+% your figures. You can just cut and paste your code into Word.
+
+
+
+%% NOTE
+% You will be marked on 1) your answers to the questions; 2) the appearance
+% of your figures - do they tell a story, and tell that story well?, 3)
+% your ability to follow directions; and 4) the elegance of your code. Keep
+% things neat and organized. Use % to make comment lines to explain what
+% you are doing. Use the semicolon ; after commands to supress unnecessary
+% output. Make sure you follow the file name conventions I've asked for.
+%
+% You need to hand in 1 file to the Lab 3 assignment dropbox on Brightspace: 
+%
+% * |Lab3Yourlastname.doc| : a *WORD document* containing your figure, the
+% answer to questions 1-2, and a copy of the code you used to produce
+% your figures. (Just cut and paste your code into Word). 
+%
+##### SOURCE END #####
+-->
+</body>
+</html>

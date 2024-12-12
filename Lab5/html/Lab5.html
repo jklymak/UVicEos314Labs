@@ -1,0 +1,428 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>Lab 5: Setting the Stage  Regional Conditions, Part 2</title>
+<meta name="generator" content="MATLAB 24.1">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2024-10-15">
+<meta name="DC.source" content="Lab5.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style>
+</head>
+<body>
+<div class="content">
+<h1>Lab 5: Setting the Stage  Regional Conditions, Part 2</h1>
+<!--introduction-->
+<!--/introduction-->
+<h2>Contents</h2>
+<div>
+<ul>
+<li>
+<a href="#2">Objectives</a>
+</li>
+<li>
+<a href="#3">1. Geography of the Area - Bathymetry</a>
+</li>
+<li>
+<a href="#14">2. What if we only want the area where the cruise took place?</a>
+</li>
+<li>
+<a href="#16">3. Overlay two data sets on one plot using hold</a>
+</li>
+<li>
+<a href="#18">Lab 5 Assignment</a>
+</li>
+<li>
+<a href="#19">NOTE:</a>
+</li>
+</ul>
+</div>
+<p>Last edited Oct 2024</p>
+<h2 id="2">Objectives</h2>
+<p>Today, we will continue to learn about MATLAB while also looking at the regional conditions surrounding our cruise area. We'll learn how to make one kind of map and start playing with lots of colour!</p>
+<p>Review commands in today's lab: find</p>
+<p>New commands in today's lab: * pcolor, contour, caxis, colorbar, hold, text * Use of colormaps * Setting the path (making the /common directory visible to MATLAB)</p>
+<h2 id="3">1. Geography of the Area - Bathymetry</h2>
+<p>What about the bathymetry? We've all seen the map in the lab... but could you produce your own?</p>
+<p>Here we will examine a few ways of looking at 2-D data. We start with bathymetry because most people have seen plots like this before. One caveat, we will not use a real geographic projection here. For now, we just want to see how to visualize 2-D data.</p>
+<pre class="codeinput">clear
+
+load <span class="string">BCregion_sm.mat</span>
+</pre>
+<p>Have a look at the data contained in BCregion.mat. Your workspace now has a three variables <tt>z</tt>, <tt>lat</tt>, and <tt>lon</tt>. Notice that all three variables are 2-dimensional arrays.</p>
+<p>Use the <tt>pcolor()</tt> command to visualize the data. Don't forget axis labels. Also, add a <tt>colorbar()</tt>. Use <tt>help pcolor</tt> to see how to use the command - you'll need three variables: x, y, and z. In this case, our x values will be longitudes, our y values latitudes, and the z values are the elevations.</p>
+<pre class="codeinput">figure(1);clf
+
+
+<span class="comment">% You will need to call |shading flat| to get rid of the black lines</span>
+<span class="comment">% covering your plot:</span>
+shading <span class="string">flat</span>   <span class="comment">%shading interp also works here</span>
+<span class="comment">% Also, because this isn't actually a map, we need to fix the aspect ratio</span>
+<span class="comment">% to look more like a geographic projection. Use the following line in ALL</span>
+<span class="comment">% your map plots:</span>
+set(gca, <span class="string">'dataaspectRatio'</span>, [1 cos(49*pi/180) 1]) <span class="comment">% use this command on all your map plots!</span>
+</pre>
+<img vspace="5" hspace="5" src="Lab5_01.png" alt=""> <p>You can define what colours are used to display the data. If you don't specify, MATLAB uses the default colormap "jet", usage: colormap(jet)</p>
+<p>Those colours are pretty funky for bathymetry. We can change colormaps with the <tt>colormap()</tt> command. The default colormap is <tt>jet</tt>. What does <tt>flipup</tt> do?</p>
+<pre class="codeinput">colormap(flipud(jet))
+</pre>
+<img vspace="5" hspace="5" src="Lab5_02.png" alt=""> <p>Play with some others. They are in the "common" directory in your MATLAB folder. MATLAB should know how to find that directory (it's in the <i>path</i>), so to use them, you just have to type in the name as in the examples above. If the common directory is greyed out in the directory listing, right click on it and select "add to path".</p>
+<p>Jody wrote one called <tt>seajmk3</tt> that is fairly good for ocean plots... colormap(seajmk3)</p>
+<p>Also, you can change the limits of the color axis, to help zoom in on the areas of interest:</p>
+<pre class="codeinput">caxis([-500 0]); <span class="comment">% what depth range does this emphasize?</span>
+</pre>
+<img vspace="5" hspace="5" src="Lab5_03.png" alt=""> <p>By carefully working with colormaps and the <tt>caxis</tt> command, you can show just the part of the data set that you are intertested in!</p>
+<p>Another way to look at the data - use the <tt>contour</tt> command. Contour takes 3 arguments, lon,lat, and z. Remember to add a colorbar.</p>
+<pre class="codeinput">figure(2); clf
+
+set(gca,<span class="string">'dataaspectratio'</span>,[1 cos(49*pi/180) 1])
+</pre>
+<img vspace="5" hspace="5" src="Lab5_04.png" alt=""> <p>You could specify what contours to use. You can put in a 4th argument to specify the contour intervals, but MAKE SURE you read the help information for how to use contour! Calculating contour intervals is very time-consuming and will bog down your computer! Remember to add a colorbar. You could also add labels to your contours, using the command <tt>clabel</tt>.</p>
+<pre class="codeinput">v=[-200 -100 0 100 200];  <span class="comment">%make a matrix of the contours you want</span>
+figure(3); clf
+[C,h]=contour(lon,lat,z, v);
+set(gca,<span class="string">'dataaspectratio'</span>,[1 cos(49*pi/180) 1])
+clabel(C,h)
+colorbar
+</pre>
+<img vspace="5" hspace="5" src="Lab5_05.png" alt=""> <h2 id="14">2. What if we only want the area where the cruise took place?</h2>
+<p>We need to zoom in on Saanich Inlet. To do so, we can use the <tt>find</tt> command to find all the data points in the dataset that correspond to certain conditions. <tt>find</tt> will find the indicies of the data - that is, it finds the data's "place in its array".</p>
+<p>What are the bounds of the area we want to map? Latitude? Longitude?</p>
+<p>See if you can figure out the find commands and the relational operators you need to take a subset of the BCregion_sm data set.</p>
+<p>Put your commands here that will take a subset of the data:</p>
+<p>Now use <tt>pcolor()</tt> to produce a bathymetric map of Saanich Inlet. figure(4);clf;</p>
+<p>shading flat</p>
+<pre class="codeinput">
+<span class="comment">% Can you figure out a way to outline the coast a bit better? You could do</span>
+<span class="comment">% it with the data set we have using the contour command. Another option is</span>
+<span class="comment">% in another data set - SViCoast.mat. See if you can figure out how to use</span>
+<span class="comment">% the variable |ncst| and the |plot| command.</span>
+hold <span class="string">on</span>
+<span class="comment">%</span>
+<span class="comment">%don't forget axis lables, title, and a colorbar.</span>
+</pre>
+<h2 id="16">3. Overlay two data sets on one plot using hold</h2>
+<p>Can you figure out a way to add a text label to the figure (using code, not the text box overlay function on the figure editor window!)?</p>
+<p>If you try to add another data set to a figure, you'll overwrite what's already there. So you need the <tt>hold</tt> command. Just put the command <i>hold on</i> after your first plot command, then put your second.</p>
+<p>The plot we have made above using pcolor is a defined x-y space, with x being longitude and y being latitude. We have used <tt>plot</tt> to put data onto an x-y space before... so you could try overlaying a <tt>plot</tt> command on top of this map. You will need the <tt>hold</tt> command. However, <tt>plot</tt> only uses symbols... what about text? Guess what? The function you want is <tt>text</tt>. Type <tt>help text</tt> to see how this function works.</p>
+<p>text(-123.4, 48.2, 'Hello')</p>
+<p>You could add the stations we visited to your bathymetry plot, making it into a map of our study area. The station locations from our 202409 cruise are available in StationLocation.mat</p>
+<pre class="codeinput">
+<span class="comment">%</span>
+</pre>
+<h2 id="18">Lab 5 Assignment</h2>
+<p>Hand in 1 file named Lab5CodeYourLastName.m containing the code to generate the figures listed below, and a comment under your code to answer Q1. Make sure that your code will run (and use the data files that I have given you, so that I have them too!).</p>
+<p>Two figures, using appropriate colormaps, labels, captions, etc:</p>
+<p>1. Close up of the bathymetry and topography of our study area (Saanich Inlet, Satellite Channel, Haro Strait). Use <tt>find</tt> to limit the data in BCregion_sm.mat and plot only the data you need for your close up plot. This map must show the stations we visited on our 18 and 25 Sep 2024 cruises.</p>
+<p>2. Regional map, to put the location of Saanich Inlet into context. You should limit the data in this plot too, to include only the areas you are likely to reference in your final project. Do you need the deep Pacific? Or merely Juan de Fuca Strait?</p>
+<p>
+<b>Q1</b>: Write a description of the geography of the study area, referring to features you see in your figures and that you think might play a role in controlling the oceanography of the Saanich Inlet area. Be specific in your description, being sure to reference approximate values (depths/elevations).</p>
+<h2 id="19">NOTE:</h2>
+<p>You will be marked on 1) your answers to the questions; 2) your ability to follow directions; and 3) the elegance of your code. Keep things neat and organized. Use % to make comment lines to explain what you are doing. Use the semicolon ; after commands to supress unnecessary output. Make sure you follow the file name conventions I've asked for.</p>
+<p>You need to submit 1 file to the dropbox on Brightspace:</p>
+<div>
+<ul>
+<li>
+<tt>Lab5CodeYourlastname.m</tt> with your code and answer to Q1</li>
+</ul>
+</div>
+<p>. . .</p>
+<p>Last compiled on:</p>
+<pre class="codeinput">datestr(now)
+</pre>
+<pre class="codeoutput">
+ans =
+
+    '15-Oct-2024 14:41:00'
+
+</pre>
+<p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2024a</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+%% Lab 5: Setting the Stage  Regional Conditions, Part 2
+
+%% 
+% Last edited Oct 2024
+
+%% Objectives
+% Today, we will continue to learn about MATLAB while also looking at the
+% regional conditions surrounding our cruise area. We'll learn how to make
+% one kind of map and start playing with lots of colour!
+%
+% Review commands in today's lab: find
+%
+% New commands in today's lab: 
+% * pcolor, contour, caxis, colorbar, hold, text
+% * Use of colormaps
+% * Setting the path (making the /common directory visible to MATLAB)
+%
+%
+%% 1. Geography of the Area - Bathymetry
+% What about the bathymetry? We've all seen the map in the lab... but could
+% you produce your own? 
+%%
+% Here we will examine a few ways of looking at 2-D data.  We start
+% with bathymetry because most people have seen plots like this
+% before. One caveat, we will not use a real geographic
+% projection here. For now, we just want to see how to visualize 2-D data.
+%
+clear
+
+load BCregion_sm.mat
+
+%%
+% Have a look at the data contained in BCregion.mat. Your workspace
+% now has a three variables |z|, |lat|, and |lon|. Notice that all three
+% variables are 2-dimensional arrays. 
+
+%%
+% Use the |pcolor()| command to visualize the data.  Don't forget axis
+% labels.  Also, add a |colorbar()|. Use |help pcolor| to see how to use
+% the command - you'll need three variables: x, y, and z. In this case, our
+% x values will be longitudes, our y values latitudes, and the z values are
+% the elevations. 
+%
+figure(1);clf
+
+
+% You will need to call |shading flat| to get rid of the black lines
+% covering your plot:
+shading flat   %shading interp also works here
+% Also, because this isn't actually a map, we need to fix the aspect ratio
+% to look more like a geographic projection. Use the following line in ALL
+% your map plots: 
+set(gca, 'dataaspectRatio', [1 cos(49*pi/180) 1]) % use this command on all your map plots!
+
+%% 
+% You can define what colours are used to display the data. If you don't
+% specify, MATLAB uses the default colormap "jet", usage: colormap(jet)
+
+%%
+% Those colours are pretty funky for bathymetry.  We can change
+% colormaps with the |colormap()| command.  The default colormap is
+% |jet|. What does |flipup| do?
+colormap(flipud(jet))
+
+%%
+% Play with some others. They are in the "common" directory in your MATLAB
+% folder. 
+% MATLAB should know how to find that directory (it's in the _path_), so to use
+% them, you just have to type in the name as in the examples above. If the
+% common directory is greyed out in the directory listing, right click on
+% it and select "add to path". 
+%
+% Jody wrote one called |seajmk3| that is fairly good for ocean plots... 
+% colormap(seajmk3)
+
+
+
+%%
+% Also, you can change the limits of the color axis, to help zoom in on the
+% areas of interest:
+caxis([-500 0]); % what depth range does this emphasize?
+
+%%
+% By carefully working with colormaps and the |caxis| command, you can show
+% just the part of the data set that you are intertested in!
+%% 
+% Another way to look at the data - use the |contour| command. Contour
+% takes 3 arguments, lon,lat, and z.   
+% Remember to add a colorbar. 
+
+figure(2); clf
+
+set(gca,'dataaspectratio',[1 cos(49*pi/180) 1])
+
+%%
+% You could specify what contours to use. You can put in a 4th argument to
+% specify the contour intervals, but MAKE SURE you read the help
+% information for how to use contour! Calculating contour intervals is very
+% time-consuming and will bog down your computer!  
+% Remember to add a colorbar. 
+% You could also add labels to your contours, using the command |clabel|. 
+
+v=[-200 -100 0 100 200];  %make a matrix of the contours you want
+figure(3); clf
+[C,h]=contour(lon,lat,z, v);
+set(gca,'dataaspectratio',[1 cos(49*pi/180) 1])
+clabel(C,h)
+colorbar
+
+%% 2. What if we only want the area where the cruise took place? 
+% We need to zoom in on Saanich Inlet. To do so, we can use the |find|
+% command to find all the data points in the dataset that correspond to
+% certain conditions. |find| will find the indicies of the data - that is,
+% it finds the data's "place in its array".
+%
+% What are the bounds of the area we want to map? Latitude? Longitude?
+%
+% See if you can figure out the find commands and the relational operators
+% you need to take a subset of the BCregion_sm data set.
+%
+% Put your commands here that will take a subset of the data:
+
+
+
+%%
+% Now use |pcolor()| to produce a bathymetric map of Saanich Inlet. 
+% figure(4);clf;
+% 
+% shading flat
+
+% Can you figure out a way to outline the coast a bit better? You could do
+% it with the data set we have using the contour command. Another option is
+% in another data set - SViCoast.mat. See if you can figure out how to use
+% the variable |ncst| and the |plot| command. 
+hold on
+%
+%don't forget axis lables, title, and a colorbar. 
+
+%% 3. Overlay two data sets on one plot using hold
+% Can you figure out a way to add a text label to the figure (using code,
+% not the text box overlay function on the figure editor window!)?
+%
+% If you try to add another data set to a figure, you'll overwrite what's
+% already there. So you need the |hold| command. Just put the command _hold
+% on_ after your first plot command, then put your second. 
+% 
+% The plot we have made above using pcolor is a defined x-y space, with x
+% being longitude and y being latitude. We have used |plot| to put data
+% onto an x-y space before... so you could try overlaying a |plot| command
+% on top of this map. You will need the |hold| command. However, |plot|
+% only uses symbols... what about text? Guess what? The function you want
+% is |text|. Type |help text| to see how this function works.
+%
+% text(-123.4, 48.2, 'Hello') 
+% 
+%%
+% You could add the stations we visited to your bathymetry plot, making it
+% into a map of our study area. The station locations from our 202409 cruise are
+% available in StationLocation.mat
+
+
+%
+%% Lab 5 Assignment
+% Hand in 1 file named Lab5CodeYourLastName.m containing the code to
+% generate the figures listed below, and a comment under your code to
+% answer Q1. Make sure that your code will run (and use the data files that
+% I have given you, so that I have them too!). 
+%
+% Two figures, using appropriate colormaps, labels, captions, etc: 
+%
+% 1. Close up of the bathymetry and topography of our study area (Saanich
+% Inlet, Satellite Channel, Haro Strait). Use |find| to limit the data in
+% BCregion_sm.mat and plot only the data you need for your close up plot.
+% This map must show the stations we visited on our 18 and 25 Sep 2024 cruises.
+%
+% 2. Regional map, to put the location of Saanich Inlet into context. You
+% should limit the data in this plot too, to include only the areas you are
+% likely to reference in your final project. Do you need the deep Pacific?
+% Or merely Juan de Fuca Strait?
+% 
+% 
+% *Q1*: Write a description of the geography of the study area, referring
+% to features you see in your figures and that you think might play a role
+% in controlling the oceanography of the Saanich Inlet area. Be specific in
+% your description, being sure to reference approximate values
+% (depths/elevations).
+
+
+%% NOTE:
+% You will be marked on 1) your answers to the questions; 2) your ability
+% to follow directions; and 3) the elegance of your code. Keep things neat
+% and organized. Use % to make comment lines to explain what you are doing.
+% Use the semicolon ; after commands to supress unnecessary output. Make
+% sure you follow the file name conventions I've asked for. 
+%
+% You need to submit 1 file to the dropbox on Brightspace:
+%
+% * |Lab5CodeYourlastname.m| with your code and answer to Q1
+%
+% 
+
+
+
+
+%%
+% .
+% .
+% .
+%%
+% Last compiled on: 
+datestr(now)
+
+
+##### SOURCE END #####
+-->
+</body>
+</html>

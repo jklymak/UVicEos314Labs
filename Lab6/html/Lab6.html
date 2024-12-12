@@ -1,0 +1,1009 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>Lab 6 - Vertical Realm (CTDs)</title>
+<meta name="generator" content="MATLAB 24.1">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2024-10-23">
+<meta name="DC.source" content="Lab6_2024.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style>
+</head>
+<body>
+<div class="content">
+<h1>Lab 6 - Vertical Realm (CTDs)</h1>
+<!--introduction-->
+<!--/introduction-->
+<h2>Contents</h2>
+<div>
+<ul>
+<li>
+<a href="#2">Objectives</a>
+</li>
+<li>
+<a href="#3">Review:</a>
+</li>
+<li>
+<a href="#4">Part I: Flow Control Tutorial</a>
+</li>
+<li>
+<a href="#7">Example using functions</a>
+</li>
+<li>
+<a href="#8">Part II: Looking at CTD casts.</a>
+</li>
+<li>
+<a href="#12">Calculating salinity and density</a>
+</li>
+<li>
+<a href="#18">Working with multiple CTD casts at the same time</a>
+</li>
+<li>
+<a href="#25">Loading all files at once</a>
+</li>
+<li>
+<a href="#27">Plotting all files at once</a>
+</li>
+<li>
+<a href="#33">Calculations on all files at once</a>
+</li>
+<li>
+<a href="#34">ASSIGNMENT</a>
+</li>
+<li>
+<a href="#35">NOTE:</a>
+</li>
+</ul>
+</div>
+<p>Last edited Oct 2024</p>
+<h2 id="2">Objectives</h2>
+<p>To learn about FLOW CONTROL in MATLAB. We will use FOR loops and IF statements.</p>
+<p>To learn about FUNCTIONS and how to use them, including the functions in the saltwater toolbox (found in your /common directory).</p>
+<p>To learn about CTD profilers used to obtain data in physical oceanography, and how to manipulate the data. These processes include calculating salinity, density, depth, buoyancy frequency and potential temperature from the measured variables.</p>
+<h2 id="3">Review:</h2>
+<div>
+<ul>
+<li>Review commands/skills: relational operators, plot, axis labels, use of functions, legend.</li>
+<li>New commands/skills: flow control (for and if loops), use of functions with multiple inputs and outputs, axis ij, using multiple colours on a plot</li>
+</ul>
+</div>
+<h2 id="4">Part I: Flow Control Tutorial</h2>
+<p>Syntax of control flow statements:</p>
+<p>for VARIABLE = EXPR</p>
+<pre>   STATEMENT</pre>
+<pre>    ...</pre>
+<pre>   STATEMENT</pre>
+<p>end</p>
+<pre class="language-matlab">EXPR <span class="string">is</span> <span class="string">a</span> <span class="string">vector</span> <span class="string">here</span>, e.g. 1:10 or <span class="string">-1:0.5:1</span> <span class="string">or</span> <span class="string">[1 4 7]</span>
+</pre>
+<p>if EXPRESSION</p>
+<pre>   STATEMENTS</pre>
+<p>elseif EXPRESSION</p>
+<p>STATEMENTS</p>
+<p>else</p>
+<p>STATEMENTS</p>
+<p>end</p>
+<pre class="language-matlab">(<span class="keyword">elseif</span> and <span class="keyword">else</span> clauses <span class="string">are</span> <span class="string">optional</span>, the <span class="string">"end"</span> <span class="string">is</span> <span class="string">required)</span>
+</pre>
+<pre class="language-matlab">EXPRESSIONs <span class="string">are</span> <span class="string">usually</span> <span class="string">made</span> <span class="string">of</span> <span class="string">relational</span> <span class="string">clauses</span>, e.g. a &lt; b
+</pre>
+<pre class="language-matlab">The <span class="string">operators</span> <span class="string">are</span> <span class="string">&lt;</span>, &gt;, &lt;=, &gt;=, ==, ~=  (almost like in C(++))
+</pre>
+<p>Examples:</p>
+<pre class="codeinput">
+<span class="keyword">for</span> i=1:2:7                  <span class="comment">% Loop from 1 to 7 in steps of 2</span>
+  i                          <span class="comment">% Print i</span>
+<span class="keyword">end</span>
+</pre>
+<pre class="codeoutput">
+i =
+
+     1
+
+
+i =
+
+     3
+
+
+i =
+
+     5
+
+
+i =
+
+     7
+
+</pre>
+<pre class="codeinput">
+<span class="keyword">for</span> i=[5 13 -1]              <span class="comment">% Loop over given vector</span>
+  <span class="keyword">if</span> (i &gt; 10)                <span class="comment">% Sample if statement</span>
+    disp(<span class="string">'Larger than 10'</span>)   <span class="comment">% Print given string</span>
+  <span class="keyword">elseif</span> i &lt; 0               <span class="comment">% Parentheses are optional</span>
+    disp(<span class="string">'Negative value'</span>)
+  <span class="keyword">else</span>
+    disp(<span class="string">'Something else'</span>)
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre>
+<pre class="codeoutput">Something else
+Larger than 10
+Negative value
+</pre>
+<p>Example: given an m x n matrix A, create a matrix B of the same size containing all zeros, and then copy into B the elements of A that are greater than zero.</p>
+<p>Implementation using loops:</p>
+<pre class="codeinput">A = [-5 3 -18 20; 34 -8 2 67; 3 5 1 -2; -7 2 45 2];
+m=4;
+n=4;
+B = zeros(m,n);
+<span class="keyword">for</span> i=1:m
+  <span class="keyword">for</span> j=1:n
+    <span class="keyword">if</span> A(i,j)&gt;0
+      B(i,j) = A(i,j);
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre>
+<h2 id="7">Example using functions</h2>
+<pre class="codeinput">x=rand(10,1); <span class="comment">%Generates 5 random numbers between 0 and 1</span>
+
+<span class="keyword">for</span> i=1:length(x)
+    y(i)=cos(x(i)); <span class="comment">%Assign variable y to be the cos of x for each element i in x</span>
+<span class="keyword">end</span>
+
+y(3)-cos(x(3)) <span class="comment">%CHECK: This should print out 0 if we have applied the function correctly.</span>
+</pre>
+<pre class="codeoutput">
+ans =
+
+     0
+
+</pre>
+<h2 id="8">Part II: Looking at CTD casts.</h2>
+<p>Let's start by looking at one CTD cast from a 18 Sep 2024 cruise. I've given you a small subset of of stations today - for your project, you'll use all stations that we visited. But for learning purposes, let's just look at a few today.</p>
+<pre class="codeinput">clear
+load <span class="string">20240918_S12.mat</span>
+</pre>
+<p>Here's some special code that I'd like you to try to understand, but don't worry about it too much. The CTD mat files from before 2022 contain all the data - the downcast AND the upcast. For clarity on our plots, we only want to look at the downcast. The code below makes a new structure (ctdd) that has only downcast data (removes upcast)</p>
+<pre class="codeinput">dP = diff(ctd.pres) &gt; 0.05; <span class="comment">%this command indexes the array to only include</span>
+                         <span class="comment">%positive differences between adjacent pressure</span>
+                         <span class="comment">%readings, i.e downcast only.</span>
+ctdd.p = ctd.pres(dP);
+ctdd.t = ctd.temp(dP);
+ctdd.c = ctd.cond(dP);
+ctdd.O2 = ctd.O2sat(dP);
+
+<span class="comment">%NOTE: The newer CTDs (RBR Maestro) automatically remove upcasts from the</span>
+<span class="comment">%data. However, previous year data (before 2022) require you to manually remove the</span>
+<span class="comment">%upcast. Thus, keep the line: dP = diff(ctd.pres) &gt; 0.05; in your code just to make</span>
+<span class="comment">%sure you are not also analyzing upcasts when analyzing older data.</span>
+</pre>
+<pre class="codeinput">figure(1); clf
+plot (ctdd.t, ctdd.p)
+axis <span class="string">ij</span>  <span class="comment">%NOTE - this changes the origin of the graph to the upper left</span>
+<span class="comment">%axis tight</span>
+
+set(gca,<span class="string">'XAxisLocation'</span>, <span class="string">'top'</span>)
+set(gca,<span class="string">'XGrid'</span>,<span class="string">'on'</span>)
+</pre>
+<img vspace="5" hspace="5" src="Lab6_2024_01.png" alt=""> <h2 id="12">Calculating salinity and density</h2>
+<pre class="codeinput">
+<span class="comment">% NOTE: The new CTDs also calculate salinity and density for us.</span>
+<span class="comment">% The old CTDs do not do this, so we are going to practice using these</span>
+<span class="comment">% functions so that you are also able to analyze previous years data (you</span>
+<span class="comment">% will need to do a multi-year comparison in your final project).</span>
+
+<span class="comment">% You'll notice  that there is no salinity variable (in datasets before 2022). The older CTD</span>
+<span class="comment">% measures three properties - _conductivity_, _temperature_, and</span>
+<span class="comment">% _pressure_. Salinity at each record can be calculated from those three</span>
+<span class="comment">% properties. Have a look at the hand-out that explains how salinity is</span>
+<span class="comment">% calculated.</span>
+<span class="comment">%</span>
+<span class="comment">% Luckily, there's a toolbox of saltwater calculations that</span>
+<span class="comment">% have be made for MATLAB. So it's very easy for us to calculate salinity.</span>
+<span class="comment">% We can just use a function that's already been written.</span>
+<span class="comment">%</span>
+<span class="comment">% Remember - all the functions that we use were written by someone. A</span>
+<span class="comment">% function is a recipe that MATLAB follows to conduct a series of steps.</span>
+<span class="comment">% You could write your own functions - especially if there is a series of</span>
+<span class="comment">% commands you use regularly.</span>
+<span class="comment">%</span>
+<span class="comment">% See the handouts on Functions and Scripts for some examples.</span>
+<span class="comment">%</span>
+<span class="comment">%</span>
+clear
+load <span class="string">EXAMPLE20180922_S12</span>
+</pre>
+<p>"Call" the <tt>sw_salt</tt> function to get salinity...</p>
+<p>========================================================================= SW_SALT  $Id: sw_salt.m,v 1.2 2004/03/18 20:27:03 pen078 Exp $ Copyright (C) CSIRO, Phil Morgan 1993.</p>
+<pre>USAGE: S = sw_salt(cndr,T,P)</pre>
+<pre class="codeinput">
+<span class="comment">% Be careful that your units for the conductivity ratio are correct!</span>
+
+<span class="comment">% And what _is_ the conductivity ratio? It is a comparison of the</span>
+<span class="comment">% conductivity of water at standard S, T, P (that is, at Salinity of 35,</span>
+<span class="comment">% Temperature of 15, and Pressure of zero) to the measured conductivity of</span>
+<span class="comment">% our water sample. The standard conductivity can be found by using the</span>
+<span class="comment">% saltwater toolbox function |sw_c3515| which gives you a number: 42.9140</span>
+
+
+c3515 = sw_c3515; <span class="comment">% units is ms/cm (you will need this statement too)</span>
+
+<span class="comment">% Calculate salinity here below, making a new entry in the ctdd structure</span>
+<span class="comment">% that contains the values for salinity</span>
+
+
+
+<span class="comment">%ctd.s = sw_salt(</span>
+</pre>
+<p>And do a quick plot to have a look at the data. (No need for axis titles, etc.)</p>
+<pre class="codeinput">figure(2); clf
+plot(ctd.s, ctd.p)
+axis <span class="string">ij</span>
+</pre>
+<pre class="codeoutput error">Unrecognized field name "s".
+
+Error in Lab6_2024 (line 207)
+plot(ctd.s, ctd.p)
+</pre>
+<p>What about density? Just like salinity, there's a function that will calculate the density of the water, given the salinity, temperature, and pressure. Density is often referred to as <i>rho</i> (as d would be confusing, since it looks like depth) Use <tt>sw_dens</tt> ...</p>
+<pre class="codeinput">
+<span class="comment">% ctdd.rho = ??</span>
+</pre>
+<p>Other functions you might be interested in:</p>
+<div>
+<ul>
+<li>potential temperature: use <tt>sw_ptmp</tt>
+</li>
+</ul>
+</div>
+<div>
+<ul>
+<li>buoyancy frequency: use <tt>sw_bfrq</tt> Note: multiple inputs and outputs possible</li>
+</ul>
+</div>
+<h2 id="18">Working with multiple CTD casts at the same time</h2>
+<p>Now that we've looked at how to calculate salinity and density on one file... could we calculate them for all the files, all at once? How about plotting the data from all casts at once?</p>
+<p>
+<b>Loading ALL the Sep 2024 (subset) CTD data</b>
+</p>
+<p>NOTE - This section can be confusing. Work through it slowly, making sure you understand each line before you move onto the next.</p>
+<p>Also Note: Here, we are loading individual files that contain all the data collected. There is another version of the CTD data available to you - a gridded data file in CtdGrid.mat. In that mat file, the data has been averaged into 1 m depth bins and gridded into a structured array. You will likely use the gridded data for your project, but it can be useful to have the single casts too.</p>
+<pre class="codeinput">clear
+files=dir(<span class="string">'2*.mat'</span>); <span class="comment">%note the use of the function |dir|...</span>
+</pre>
+<p>Let's look at <tt>files</tt>. What is the value of the variable <tt>files</tt>? How do we find out? Simply re-run the previous command without suppressing the output in the command prompt.</p>
+<pre class="codeinput">files=dir(<span class="string">'2*.mat'</span>)
+</pre>
+<p>What is contained in the variable <tt>files.name</tt>?</p>
+<pre class="codeinput">files.name
+</pre>
+<p>What is the first file listed in <tt>files</tt>?</p>
+<pre class="codeinput">files(1)
+</pre>
+<p>What is the name of the third file listed in <tt>files</tt>?</p>
+<pre class="codeinput">files(3).name
+</pre>
+<p>How many files do we want to load? We want all the CTD data files... we could go to the directory and count... or we could use MATLAB to check for us:</p>
+<pre class="codeinput">length(files)
+</pre>
+<h2 id="25">Loading all files at once</h2>
+<p>Now, we want to load ALL of these data sets at once. All the mat files contain variables of the same name (just like the 2 VENUS data sets last lab). So if we just load them one after the other, the data will get overwritten by the next file to be loaded.</p>
+<p>If we use a for loop, we can load all the files in, but give each a unique identifier (it's own index value).</p>
+<pre class="codeinput">
+<span class="keyword">for</span> i=1:length(files);
+    load (files(i).name);  <span class="comment">% what is this command doing on the 2nd time through the loop?</span>
+    ctd(i)=ctd;
+
+<span class="keyword">end</span>; <span class="comment">%for i=each file, which is each station</span>
+</pre>
+<p>This works just fine to load in all the files... but recall from above, each file contains both the upcast and the downcast. We only want the downcast... So, rather than me getting in there and reprocessing all the data before giving it to you, I'll just give you the code you need to process it. So... we need to run this loop slightly differently than we just did above.</p>
+<pre class="codeinput">
+<span class="comment">% As we saw above, each CTD mat file</span>
+<span class="comment">% contains all the data - the downcast AND the upcast. For clarity on our</span>
+<span class="comment">% plots, we only want to look at the downcast. The code below makes a new</span>
+<span class="comment">% structure (ctdd) that has only downcast data (removes upcast)</span>
+
+<span class="keyword">for</span> i=1:length(files);
+    load (files(i).name);  <span class="comment">% what is this command doing on the 2nd time through the loop?</span>
+    ctd(i)=ctd;
+        dP = diff(ctd(i).pres) &gt; 0.05;
+        ctdd(i).p = ctd(i).pres(dP);
+        ctdd(i).t = ctd(i).temp(dP);
+        ctdd(i).c = ctd(i).cond(dP);
+        ctdd(i).O2 = ctd(i).O2sat(dP);
+        ctdd(i).id = ctd(i).id;
+        ctdd(i).lon= ctd(i).lon;
+        ctdd(i).lat= ctd(i).lat;
+
+<span class="keyword">end</span>; <span class="comment">%for i=each file, which is each station</span>
+</pre>
+<h2 id="27">Plotting all files at once</h2>
+<p>Now, we have all the CTD files in the Workspace memory, which means we can plot the data.</p>
+<p>
+<b>Plotting vertical plots</b>
+</p>
+<p>Let's start by plotting the S12 cast again, like we did above. We need to know what the file number is for S12. How do we find that out? We can use  <i>files.name</i> to list all the files and then just count through to find the one we are looking for.</p>
+<pre class="codeinput">figure(3);clf;
+
+plot(ctdd(2).t, ctdd(2).p);
+
+axis <span class="string">ij</span>
+
+xlabel(<span class="string">'Temperature (^oC)'</span>)
+ylabel(<span class="string">'Pressure (db)'</span>)
+axis <span class="string">tight</span>
+title(<span class="string">'Temperature profile for Station S12, 18 Sep 2024'</span>)
+</pre>
+<p>Make sure you understand how we got Station S12 to graph. What would we type to get station A2?</p>
+<p>Let's plot S12 and A2 on the same graph.</p>
+<pre class="codeinput">figure(4);clf;
+
+plot(ctdd(2).t, ctdd(2).p)
+hold <span class="string">on</span>
+plot(ctdd(1).t, ctdd(1).p)
+axis <span class="string">ij</span>
+axis <span class="string">tight</span>
+</pre>
+<p>If you're using an older version of Matlab, both lines will be blue. If you're using a newer one, it will automagically change the second line to red. We can also tell it what colour to use for each line - like this:</p>
+<pre class="codeinput">figure(5);clf;
+plot(ctdd(2).t, ctdd(2).p, <span class="string">'r'</span>)
+hold <span class="string">on</span>
+plot(ctdd(1).t, ctdd(1).p, <span class="string">'k'</span>)
+axis <span class="string">ij</span>
+axis <span class="string">tight</span>
+
+<span class="comment">%use the legend command to differeniate between the lines</span>
+</pre>
+<p>Now, let's plot ALL the files on the same graph, using a different colour for each line. We could type in many plot commands... but that's not necessary. We already learned how to do the same thing, multiple times. We'll do it using a <tt>for loop</tt>. The command <tt>jet</tt> gives us a set of colours, and we'll specify that we want enough different colours.</p>
+<pre class="codeinput">figure(6);clf;
+mycolours = jet(7);
+
+<span class="keyword">for</span> k=1:(length(files));
+    plot(ctdd(k).t, ctdd(k).p, <span class="string">'color'</span>, mycolours(k,:))
+    hold <span class="string">on</span>
+<span class="keyword">end</span>;
+<span class="comment">% note how we are specifying colors... 'color' tells MATLAB that the next</span>
+<span class="comment">% piece of information will be the colour I want to use... and then we give</span>
+<span class="comment">% MATLAB an array of colours that we just made.</span>
+
+xlabel(<span class="string">'Temperature (^oC)'</span>)
+ylabel(<span class="string">'Pressure (db)'</span>)
+axis <span class="string">ij</span>
+axis <span class="string">tight</span>
+title(<span class="string">'Temperature profiles 20240918'</span>)
+set(gca,<span class="string">'XAxisLocation'</span>, <span class="string">'top'</span>)
+set(gca,<span class="string">'XGrid'</span>,<span class="string">'on'</span>)
+</pre>
+<p>This is very pretty... but meaningless without a legend. Each files has it's own colour. We need to find out the order that the files are listed in the <tt>files</tt> variable, since that is the order that they are processed, so the order in which they are plotted. And then we need to add these names to a legend command. (We'll do this by hand, but it <i>can</i> be coded...)</p>
+<p>put your legend command here</p>
+<pre class="codeinput">hold <span class="string">on</span>
+<span class="comment">% legend()</span>
+</pre>
+<h2 id="33">Calculations on all files at once</h2>
+<p>We've now seen how to use for loops to load the data and to plot the data. Could we also use them to do calculations on the data? Sure!</p>
+<p>Let's calculate salinity from conductivity, temp and pressure</p>
+<pre class="codeinput">c3515 = sw_c3515; <span class="comment">% units is ms/cm</span>
+
+
+<span class="keyword">for</span> j=1:length(files)
+
+    <span class="comment">%put your code to calculate salinity and density in here! Both salinity</span>
+    <span class="comment">%and density calculations can go in the same for loop, provided you do</span>
+    <span class="comment">%salinity first, since the density calculation needs salinity!</span>
+
+<span class="keyword">end</span>;
+
+<span class="comment">%NOTE: THIS SECTION WILL ONLY BE FOR PRACTICE AS THE CONDUCTIVITY</span>
+<span class="comment">%MEASUREMENTS IN THE 2024 DATA ARE DIFFERENT THAN PREVIOUS YEARS, SO THE</span>
+<span class="comment">%VALUES WILL NOT MAKE ANY SENSE.</span>
+
+<span class="comment">%WHEN DOING THE ASSIGNMENT, USE THE SALINITY AND DENSITY VARIABLES THAT ARE</span>
+<span class="comment">%ALREADY IN THE 2024 DATA.</span>
+</pre>
+<h2 id="34">ASSIGNMENT</h2>
+<p>
+<b>Part 2</b>. Sep 18 2024 subset CTD Data (/10)</p>
+<p>Make and hand in a new script, Lab6CodeYourlastname.m</p>
+<p>Include in this file all the code you need to:</p>
+<div>
+<ul>
+<li>1. Load all of the stations from the 18 Sep 2024 cruise subset using a for loop and limit the data to only the downcast information.</li>
+<li>2. Save your new data structure (ctdd) into a mat file called MyLastName.mat</li>
+<li>3. Code to produce a plot of S vs T (known as a TS plot)for A2, S4, and S5. Use points, not lines; different colour for each CTD cast.</li>
+<li>4. Code to produce a plot of density vs pressure for two of the stations (you choose which two stations) - there will be two lines on this graph.</li>
+</ul>
+</div>
+<p>Plots should include all appropriate labels (axis, legend, titles if needed...) and have appropriate axis limits, etc, so that you can reasonably interpret the plots.</p>
+<p>Code will be marked by running the m-file, so make sure that it works before you hand it in. Make sure to add comments to explain what you are doing, and use semicolons (;) to suppress unneccesary screen output.</p>
+<p>
+<b>Part 3</b> Written Questions ( /5)</p>
+<p>Below the code for Part 2 (above), type the answers to the following questions.</p>
+<p>
+<b>Q1</b> Look at your plot of density vs P for two stations. Are there any differences between the lines? Give a brief description of the two data sets (mixed layer depth? surface values? deep values?) What time was each sample was taken (use the log sheets)? What (roughly) was the tide doing at each sample time? (You will need to find tide info for our cruise dates for this! <a href="http://www.tides.gc.ca/eng/station?type=0&amp;sid=7277&amp;tz=UTC&amp;pres=1">http://www.tides.gc.ca/eng/station?type=0&amp;sid=7277&amp;tz=UTC&amp;pres=1</a>)</p>
+<p>
+<b>Q2</b> Look at your TS plot. Does Stn S4 have the same TS characteristics as the other two stations? In what corner of the graph is the 'deep' water of Saanich Inlet? Does A2 have any water that is the same density as the 'deep' Saanich Inlet water?</p>
+<h2 id="35">NOTE:</h2>
+<p>You will be marked on 1) your answers to the questions; 2) your ability to follow directions; and 3) the elegance of your code. Keep things neat and organized. Use % to make comment lines to explain what you are doing. Use the semicolon ; after commands to suppress unnecessary output. Make sure you follow the file name conventions I've asked for.</p>
+<p>You need to hand in 1 file to Brightspace.</p>
+<div>
+<ul>
+<li>
+<tt>Lab6CodeYourlastname.m</tt> with your code and answers to all questions.</li>
+</ul>
+</div>
+<pre class="codeinput">datestr(now)
+</pre>
+<p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2024a</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+%% Lab 6 - Vertical Realm (CTDs) 
+%%
+% Last edited Oct 2024
+%
+
+%% Objectives
+%
+% To learn about FLOW CONTROL in MATLAB. We will use FOR loops and IF
+% statements. 
+%
+% To learn about FUNCTIONS and how to use them, including the functions in
+% the saltwater toolbox (found in your /common directory).
+%
+% To learn about CTD profilers used to obtain data in physical
+% oceanography, and how to manipulate the data. These processes
+% include calculating salinity, density, depth, buoyancy frequency and
+% potential temperature from the measured variables.
+%
+%% Review:
+%
+% * Review commands/skills: relational operators, plot, axis labels, use of
+% functions, legend.
+% * New commands/skills: flow control (for and if loops), use of functions
+% with multiple inputs and outputs, axis ij, using multiple colours on a
+% plot
+%% Part I: Flow Control Tutorial
+% Syntax of control flow statements:
+% 
+% for VARIABLE = EXPR
+%
+%     STATEMENT
+%
+%      ...
+%
+%     STATEMENT
+%
+% end 
+%
+%   EXPR is a vector here, e.g. 1:10 or -1:0.5:1 or [1 4 7]
+% 
+% 
+% if EXPRESSION
+%
+%     STATEMENTS 
+%
+% elseif EXPRESSION
+%
+% STATEMENTS
+%
+% else
+% 
+% STATEMENTS
+%
+% end 
+%
+%   (elseif and else clauses are optional, the "end" is required)
+%
+%   EXPRESSIONs are usually made of relational clauses, e.g. a < b
+%
+%   The operators are <, >, <=, >=, ==, ~=  (almost like in C(++))
+%
+% Examples:
+for i=1:2:7                  % Loop from 1 to 7 in steps of 2
+  i                          % Print i
+end
+
+%%
+for i=[5 13 -1]              % Loop over given vector
+  if (i > 10)                % Sample if statement
+    disp('Larger than 10')   % Print given string
+  elseif i < 0               % Parentheses are optional
+    disp('Negative value') 
+  else
+    disp('Something else')
+  end
+end
+%%
+% Example: given an m x n matrix A, create a matrix B of the same size
+%   containing all zeros, and then copy into B the elements of A that
+%   are greater than zero.
+%
+% Implementation using loops:
+A = [-5 3 -18 20; 34 -8 2 67; 3 5 1 -2; -7 2 45 2];
+m=4;
+n=4;
+B = zeros(m,n);
+for i=1:m
+  for j=1:n
+    if A(i,j)>0
+      B(i,j) = A(i,j);
+    end
+  end
+end
+
+
+%% Example using functions 
+
+x=rand(10,1); %Generates 5 random numbers between 0 and 1
+
+for i=1:length(x) 
+    y(i)=cos(x(i)); %Assign variable y to be the cos of x for each element i in x 
+end
+
+y(3)-cos(x(3)) %CHECK: This should print out 0 if we have applied the function correctly. 
+
+
+%% Part II: Looking at CTD casts.  
+%
+% Let's start by looking at one CTD cast from a 18 Sep 2024 cruise. I've
+% given you a small subset of of stations today - for your project, you'll
+% use all stations that we visited. But for learning purposes, let's
+% just look at a few today.
+%
+
+%% 
+clear
+load 20240918_S12.mat
+%%
+% Here's some special code that I'd like you to try to understand, but
+% don't worry about it too much. The CTD mat files from before 2022
+% contain all the data - the downcast AND the upcast. For clarity on our
+% plots, we only want to look at the downcast. The code below makes a new
+% structure (ctdd) that has only downcast data (removes upcast)
+
+dP = diff(ctd.pres) > 0.05; %this command indexes the array to only include
+                         %positive differences between adjacent pressure
+                         %readings, i.e downcast only. 
+ctdd.p = ctd.pres(dP);
+ctdd.t = ctd.temp(dP);
+ctdd.c = ctd.cond(dP);
+ctdd.O2 = ctd.O2sat(dP);
+
+%NOTE: The newer CTDs (RBR Maestro) automatically remove upcasts from the
+%data. However, previous year data (before 2022) require you to manually remove the
+%upcast. Thus, keep the line: dP = diff(ctd.pres) > 0.05; in your code just to make
+%sure you are not also analyzing upcasts when analyzing older data.
+
+
+%%
+figure(1); clf
+plot (ctdd.t, ctdd.p)
+axis ij  %NOTE - this changes the origin of the graph to the upper left
+%axis tight
+
+set(gca,'XAxisLocation', 'top')
+set(gca,'XGrid','on')
+
+%% Calculating salinity and density 
+%
+
+% NOTE: The new CTDs also calculate salinity and density for us.
+% The old CTDs do not do this, so we are going to practice using these
+% functions so that you are also able to analyze previous years data (you
+% will need to do a multi-year comparison in your final project). 
+
+% You'll notice  that there is no salinity variable (in datasets before 2022). The older CTD
+% measures three properties - _conductivity_, _temperature_, and
+% _pressure_. Salinity at each record can be calculated from those three
+% properties. Have a look at the hand-out that explains how salinity is
+% calculated.
+%
+% Luckily, there's a toolbox of saltwater calculations that
+% have be made for MATLAB. So it's very easy for us to calculate salinity.
+% We can just use a function that's already been written. 
+%
+% Remember - all the functions that we use were written by someone. A
+% function is a recipe that MATLAB follows to conduct a series of steps.
+% You could write your own functions - especially if there is a series of
+% commands you use regularly. 
+%
+% See the handouts on Functions and Scripts for some examples. 
+%
+% 
+clear
+load EXAMPLE20180922_S12
+%%
+% "Call" the |sw_salt| function to get salinity...
+%%
+% =========================================================================
+%  SW_SALT  $Id: sw_salt.m,v 1.2 2004/03/18 20:27:03 pen078 Exp $
+%           Copyright (C) CSIRO, Phil Morgan 1993.
+% 
+%  USAGE: S = sw_salt(cndr,T,P)
+
+% Be careful that your units for the conductivity ratio are correct!
+
+% And what _is_ the conductivity ratio? It is a comparison of the
+% conductivity of water at standard S, T, P (that is, at Salinity of 35,
+% Temperature of 15, and Pressure of zero) to the measured conductivity of
+% our water sample. The standard conductivity can be found by using the
+% saltwater toolbox function |sw_c3515| which gives you a number: 42.9140
+
+
+c3515 = sw_c3515; % units is ms/cm (you will need this statement too)
+
+% Calculate salinity here below, making a new entry in the ctdd structure
+% that contains the values for salinity
+ 
+
+
+%ctd.s = sw_salt(
+
+%%
+% And do a quick plot to have a look at the data. (No need for axis titles,
+% etc.)
+figure(2); clf
+plot(ctd.s, ctd.p)
+axis ij
+
+%%
+% What about density? Just like salinity, there's a function that will
+% calculate the density of the water, given the salinity, temperature, and
+% pressure. Density is often referred to as _rho_ (as d would be confusing,
+% since it looks like depth)
+% Use |sw_dens| ...
+
+% ctdd.rho = ??
+
+%% 
+% Other functions you might be interested in: 
+%
+% * potential temperature: use |sw_ptmp|
+%
+% * buoyancy frequency: use |sw_bfrq|  ** Note: multiple inputs and outputs
+% possible
+
+
+
+%% Working with multiple CTD casts at the same time
+%
+% Now that we've looked at how to calculate salinity and density on one
+% file... could we calculate them for all the files, all at once? How about
+% plotting the data from all casts at once? 
+
+%% 
+% *Loading ALL the Sep 2024 (subset) CTD data*
+% 
+% NOTE - This section can be confusing. Work through it slowly, making sure
+% you understand each line before you move onto the next. 
+%
+% Also Note: Here, we are loading individual files that contain all the
+% data collected.  There is another version of the CTD data available to
+% you - a gridded data file in CtdGrid.mat. In that mat file, the data has
+% been averaged into 1 m depth bins and gridded into a structured array. You
+% will likely use the gridded data for your project, but it can be useful
+% to have the single casts too.
+
+clear
+files=dir('2*.mat'); %note the use of the function |dir|...
+
+%%
+% Let's look at |files|. What is the value of the variable |files|? How do
+% we find out? Simply re-run the previous command without suppressing the 
+% output in the command prompt.
+%
+files=dir('2*.mat')
+
+%%
+% What is contained in the variable |files.name|?
+files.name
+
+%%
+% What is the first file listed in |files|?
+files(1)
+%%
+% What is the name of the third file listed in |files|?
+files(3).name
+
+%%
+% How many files do we want to load? We want all the CTD data files... we
+% could go to the directory and count... or we could use MATLAB to check
+% for us:
+length(files)
+
+%% Loading all files at once
+% Now, we want to load ALL of these data sets at once. All the mat
+% files contain variables of the same name (just like the 2 VENUS data sets
+% last lab). So if we just load them one after the other, the data will get
+% overwritten by the next file to be loaded. 
+%
+% If we use a for loop, we can load all the files in, but give each a unique
+% identifier (it's own index value). 
+
+
+for i=1:length(files);
+    load (files(i).name);  % what is this command doing on the 2nd time through the loop?
+    ctd(i)=ctd;
+   
+end; %for i=each file, which is each station
+%%
+% This works just fine to load in all the files... but recall from above,
+% each file contains both the upcast and the downcast. We only want the
+% downcast... So, rather than me getting in there and reprocessing all the
+% data before giving it to you, I'll just give you the code you need to
+% process it. So... we need to run this loop slightly differently than we
+% just did above. 
+
+% As we saw above, each CTD mat file
+% contains all the data - the downcast AND the upcast. For clarity on our
+% plots, we only want to look at the downcast. The code below makes a new
+% structure (ctdd) that has only downcast data (removes upcast)   
+   
+for i=1:length(files);
+    load (files(i).name);  % what is this command doing on the 2nd time through the loop?
+    ctd(i)=ctd;
+        dP = diff(ctd(i).pres) > 0.05; 
+        ctdd(i).p = ctd(i).pres(dP);
+        ctdd(i).t = ctd(i).temp(dP);
+        ctdd(i).c = ctd(i).cond(dP);
+        ctdd(i).O2 = ctd(i).O2sat(dP);
+        ctdd(i).id = ctd(i).id;
+        ctdd(i).lon= ctd(i).lon;
+        ctdd(i).lat= ctd(i).lat;
+        
+end; %for i=each file, which is each station
+%% Plotting all files at once
+% Now, we have all the CTD files in the Workspace memory, which means we can
+% plot the data. 
+%
+% *Plotting vertical plots*
+%
+% Let's start by plotting the S12 cast again, like we did above. We need to
+% know what the file number is for S12. How do we find that out? 
+% We can use  _files.name_ to list all the files and then just count
+% through to find the one we are looking for. 
+figure(3);clf;
+
+plot(ctdd(2).t, ctdd(2).p);
+
+axis ij
+
+xlabel('Temperature (^oC)')
+ylabel('Pressure (db)')
+axis tight
+title('Temperature profile for Station S12, 18 Sep 2024')
+
+%%
+% Make sure you understand how we got Station S12 to graph. What would we
+% type to get station A2? 
+
+%%
+% Let's plot S12 and A2 on the same graph. 
+
+
+figure(4);clf;
+
+plot(ctdd(2).t, ctdd(2).p)
+hold on
+plot(ctdd(1).t, ctdd(1).p)
+axis ij
+axis tight
+
+
+%%
+% If you're using an older version of Matlab, both lines will be blue. If
+% you're using a newer one, it will automagically change the second line to
+% red. We can also tell it what colour to use for each line - like this:
+%
+figure(5);clf;
+plot(ctdd(2).t, ctdd(2).p, 'r')
+hold on
+plot(ctdd(1).t, ctdd(1).p, 'k')
+axis ij
+axis tight
+
+%use the legend command to differeniate between the lines
+%%
+% Now, let's plot ALL the files on the same graph, using a different colour
+% for each line. We could type in many plot commands... but that's not
+% necessary. We already learned how to do the same thing, multiple times.
+% We'll do it using a |for loop|. The command |jet| gives us a set of
+% colours, and we'll specify that we want enough different colours. 
+
+figure(6);clf;
+mycolours = jet(7);
+
+for k=1:(length(files));
+    plot(ctdd(k).t, ctdd(k).p, 'color', mycolours(k,:))
+    hold on
+end;
+% note how we are specifying colors... 'color' tells MATLAB that the next
+% piece of information will be the colour I want to use... and then we give
+% MATLAB an array of colours that we just made.
+
+xlabel('Temperature (^oC)')
+ylabel('Pressure (db)')
+axis ij
+axis tight
+title('Temperature profiles 20240918')
+set(gca,'XAxisLocation', 'top')
+set(gca,'XGrid','on')
+
+%%
+% This is very pretty... but meaningless without a legend. Each files has
+% it's own colour. We need to find out the order that the files are listed
+% in the |files| variable, since that is the order that they are processed,
+% so the order in which they are plotted. And then we need to add these
+% names to a legend command. (We'll do this by hand, but it _can_ be
+% coded...)
+% 
+% put your legend command here
+hold on
+% legend()
+
+%% Calculations on all files at once
+% We've now seen how to use for loops to load the data and to plot the
+% data. Could we also use them to do calculations on the data? Sure!
+%
+% Let's calculate salinity from conductivity, temp and pressure
+
+c3515 = sw_c3515; % units is ms/cm
+ 
+
+for j=1:length(files)
+
+    %put your code to calculate salinity and density in here! Both salinity
+    %and density calculations can go in the same for loop, provided you do
+    %salinity first, since the density calculation needs salinity!
+
+end;
+
+%NOTE: THIS SECTION WILL ONLY BE FOR PRACTICE AS THE CONDUCTIVITY
+%MEASUREMENTS IN THE 2024 DATA ARE DIFFERENT THAN PREVIOUS YEARS, SO THE
+%VALUES WILL NOT MAKE ANY SENSE. 
+
+%WHEN DOING THE ASSIGNMENT, USE THE SALINITY AND DENSITY VARIABLES THAT ARE
+%ALREADY IN THE 2024 DATA.
+
+
+
+%% ASSIGNMENT
+%  
+%
+% *Part 2*. Sep 18 2024 subset CTD Data (/10)
+% 
+% Make and hand in a new script, Lab6CodeYourlastname.m
+%
+% Include in this file all the code you need to: 
+%
+% * 1. Load all of the stations from the 18 Sep 2024 cruise subset using a for loop
+% and limit the data to only the downcast information.
+% * 2. Save your new data structure (ctdd) into a mat file called MyLastName.mat
+% * 3. Code to produce a plot of S vs T (known as a TS plot)for A2,
+% S4, and S5. Use points, not lines; different colour for each CTD cast.
+% * 4. Code to produce a plot of density vs pressure for two of the
+% stations (you choose which two stations) - there will be two lines on
+% this graph.
+%
+% Plots should include all appropriate labels (axis, legend, titles if
+% needed...) and have appropriate axis limits, etc, so that you can
+% reasonably interpret the plots.
+%
+% Code will be marked by running the m-file, so make sure that it works
+% before you hand it in. Make sure to add comments to explain what you are
+% doing, and use semicolons (;) to suppress unneccesary screen output. 
+%
+% *Part 3* Written Questions  (  /5)
+%
+% Below the code for Part 2 (above), type the answers to the following
+% questions. 
+%
+% *Q1* Look at your plot of density vs P for two stations. Are there any
+% differences between the lines? Give a brief description of the two data
+% sets (mixed layer depth? surface values? deep values?) What time was each
+% sample was taken (use the log sheets)? What (roughly) was the tide doing
+% at each sample time? (You will need to find tide info for our cruise
+% dates for this! http://www.tides.gc.ca/eng/station?type=0&sid=7277&tz=UTC&pres=1)
+%
+% *Q2* Look at your TS plot. Does Stn S4 have the same TS characteristics
+% as the other two stations? In what corner of the graph is the 'deep'
+% water of Saanich Inlet? Does A2 have any water that is the same density
+% as the 'deep' Saanich Inlet water? 
+%
+%
+%
+%% NOTE:
+% You will be marked on 1) your answers to the questions; 2) your ability
+% to follow directions; and 3) the elegance of your code. Keep things neat
+% and organized. Use % to make comment lines to explain what you are doing.
+% Use the semicolon ; after commands to suppress unnecessary output. Make
+% sure you follow the file name conventions I've asked for. 
+%
+% You need to hand in 1 file to Brightspace.
+%
+% * |Lab6CodeYourlastname.m| with your code and answers to all questions. 
+%
+% 
+%%
+%
+%%
+datestr(now)
+
+
+
+
+##### SOURCE END #####
+-->
+</body>
+</html>
